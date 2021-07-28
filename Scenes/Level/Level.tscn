@@ -1,0 +1,85 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://TileMaps/GrassAndDirt.tscn" type="PackedScene" id=1]
+[ext_resource path="res://TileMaps/SandAndDirt.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/Tilesheet/towerDefense_tilesheet.png" type="Texture" id=3]
+[ext_resource path="res://Scenes/Level/Level.gd" type="Script" id=4]
+[ext_resource path="res://Scenes/Level/Spawners.gd" type="Script" id=5]
+[ext_resource path="res://Scenes/Level/Towers.gd" type="Script" id=6]
+[ext_resource path="res://Scenes/Level/GUI.gd" type="Script" id=7]
+[ext_resource path="res://Scenes/Towers/GUI/TowerSettings.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Scenes/Towers/GUInput.gd" type="Script" id=9]
+[ext_resource path="res://Scenes/Towers/GUI/CoinsManager.tscn" type="PackedScene" id=10]
+
+[sub_resource type="TileSet" id=1]
+0/name = "towerDefense_tilesheet.png 0"
+0/texture = ExtResource( 3 )
+0/tex_offset = Vector2( 0, 0 )
+0/modulate = Color( 1, 1, 1, 1 )
+0/region = Rect2( 0, 192, 640, 384 )
+0/tile_mode = 1
+0/autotile/bitmask_mode = 1
+0/autotile/bitmask_flags = [ Vector2( 0, 3 ), 255, Vector2( 0, 4 ), 219, Vector2( 0, 5 ), 507, Vector2( 1, 3 ), 63, Vector2( 1, 5 ), 504, Vector2( 2, 3 ), 447, Vector2( 2, 4 ), 438, Vector2( 2, 5 ), 510, Vector2( 3, 3 ), 432, Vector2( 3, 4 ), 54, Vector2( 3, 5 ), 495, Vector2( 4, 3 ), 216, Vector2( 4, 4 ), 27, Vector2( 4, 5 ), 511, Vector2( 5, 0 ), 256, Vector2( 5, 1 ), 292, Vector2( 5, 2 ), 4, Vector2( 6, 0 ), 448, Vector2( 6, 1 ), 511, Vector2( 6, 2 ), 7, Vector2( 7, 0 ), 64, Vector2( 7, 1 ), 73, Vector2( 7, 2 ), 1, Vector2( 8, 0 ), 79, Vector2( 8, 1 ), 457, Vector2( 8, 2 ), 16, Vector2( 9, 0 ), 295, Vector2( 9, 1 ), 484 ]
+0/autotile/icon_coordinate = Vector2( 0, 0 )
+0/autotile/tile_size = Vector2( 64, 64 )
+0/autotile/spacing = 0
+0/autotile/occluder_map = [  ]
+0/autotile/navpoly_map = [  ]
+0/autotile/priority_map = [  ]
+0/autotile/z_index_map = [  ]
+0/occluder_offset = Vector2( 0, 0 )
+0/navigation_offset = Vector2( 0, 0 )
+0/shape_offset = Vector2( 0, 0 )
+0/shape_transform = Transform2D( 1, 0, 0, 1, 0, 0 )
+0/shape_one_way = false
+0/shape_one_way_margin = 0.0
+0/shapes = [  ]
+0/z_index = 0
+
+[node name="Level" type="Node2D"]
+script = ExtResource( 4 )
+
+[node name="TileMaps" type="Node2D" parent="."]
+
+[node name="GrassAndDirt" parent="TileMaps" instance=ExtResource( 1 )]
+
+[node name="SandAndDirt" parent="TileMaps" instance=ExtResource( 2 )]
+tile_set = SubResource( 1 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+zoom = Vector2( 1.5, 1.5 )
+
+[node name="Environment" type="Node2D" parent="."]
+
+[node name="Towers" type="Node2D" parent="."]
+script = ExtResource( 6 )
+bullets = NodePath("../Bullets")
+gui = NodePath("../GUI")
+
+[node name="GUInput" type="Control" parent="."]
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 10000, 10000 )
+mouse_filter = 1
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+towers = NodePath("../Towers")
+
+[node name="Spawners" type="Node2D" parent="."]
+script = ExtResource( 5 )
+pathNode = NodePath("../Path2D")
+
+[node name="Path2D" type="Path2D" parent="."]
+curve = null
+
+[node name="Bullets" type="Node2D" parent="."]
+
+[node name="GUI" type="CanvasLayer" parent="."]
+script = ExtResource( 7 )
+towerMenuScene = ExtResource( 8 )
+
+[node name="CoinsManager" parent="GUI" instance=ExtResource( 10 )]

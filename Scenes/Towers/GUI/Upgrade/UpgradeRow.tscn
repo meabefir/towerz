@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Fonts/white_small_size.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Scenes/Towers/GUI/Upgrade/UpgradeRow.gd" type="Script" id=2]
+[ext_resource path="res://Scenes/Towers/GUI/Upgrade/UpgradeButton.tscn" type="PackedScene" id=3]
+
+[node name="UpgradeRow" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_right = -800.0
+margin_bottom = -504.0
+rect_min_size = Vector2( 224, 96 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+UpgradeButtonScene = ExtResource( 3 )
+container = NodePath("HBoxContainer")
+
+[node name="Label" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 32.0
+custom_fonts/font = ExtResource( 1 )
+text = "test"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = 32.0
+margin_bottom = -7.62939e-06
+grow_horizontal = 2
+grow_vertical = 2
+rect_min_size = Vector2( 224, 64 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="tree_exiting" from="." to="." method="_on_UpgradeRow_tree_exiting"]

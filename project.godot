@@ -1,0 +1,100 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "Resource",
+"class": "DamageType",
+"language": "GDScript",
+"path": "res://ResourceTemplates/DamageType.gd"
+}, {
+"base": "Resource",
+"class": "EnemiesInLevel",
+"language": "GDScript",
+"path": "res://ResourceTemplates/EnemiesInLevel.gd"
+}, {
+"base": "PathFollow2D",
+"class": "Enemy",
+"language": "GDScript",
+"path": "res://Scenes/Enemies/Enemy.gd"
+}, {
+"base": "Resource",
+"class": "EnemyStats",
+"language": "GDScript",
+"path": "res://ResourceTemplates/EnemyStats.gd"
+}, {
+"base": "Resource",
+"class": "LevelData",
+"language": "GDScript",
+"path": "res://ResourceTemplates/LevelData.gd"
+}, {
+"base": "Resource",
+"class": "SettingsData",
+"language": "GDScript",
+"path": "res://ResourceTemplates/SettingsData.gd"
+}, {
+"base": "Resource",
+"class": "TargetingModes",
+"language": "GDScript",
+"path": "res://ResourceTemplates/TargetingModes.gd"
+}, {
+"base": "Node2D",
+"class": "Tower",
+"language": "GDScript",
+"path": "res://Scenes/Towers/Tower.gd"
+}, {
+"base": "Resource",
+"class": "UpgradeInfo",
+"language": "GDScript",
+"path": "res://ResourceTemplates/UpgradeInfo.gd"
+} ]
+_global_script_class_icons={
+"DamageType": "",
+"EnemiesInLevel": "",
+"Enemy": "",
+"EnemyStats": "",
+"LevelData": "",
+"SettingsData": "",
+"TargetingModes": "",
+"Tower": "",
+"UpgradeInfo": ""
+}
+
+[application]
+
+config/name="tower defense"
+run/main_scene="res://Scenes/Levels/Scenes/Level1.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+Events="*res://Autoload/Events.tscn"
+Global="*res://Autoload/Global.tscn"
+
+[display]
+
+window/vsync/use_vsync=false
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
+[input_devices]
+
+pointing/emulate_touch_from_mouse=true
+
+[layer_names]
+
+2d_physics/layer_2="enemy_hurtbox"
+
+[rendering]
+
+quality/driver/driver_name="GLES2"
+quality/2d/use_pixel_snap=true
+vram_compression/import_etc=true
+vram_compression/import_etc2=false
+environment/default_environment="res://default_env.tres"

@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Scenes/Towers/GUI/CoinsManager.gd" type="Script" id=1]
+[ext_resource path="res://assets/UI/PNG/red_sliderRight.png" type="Texture" id=2]
+[ext_resource path="res://assets/UI/Font/kenvector_future.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://assets/PNG/Retina/towerDefense_tile272.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 24
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+font_data = ExtResource( 3 )
+
+[node name="CoinsManager" type="Control"]
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 160.0
+margin_bottom = 48.0
+texture = ExtResource( 2 )
+patch_margin_left = 15
+patch_margin_top = 15
+patch_margin_right = 15
+patch_margin_bottom = 15
+
+[node name="Label" type="Label" parent="."]
+margin_left = 6.0
+margin_right = 145.0
+margin_bottom = 43.0
+custom_fonts/font = SubResource( 1 )
+text = "123"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_left = 96.0
+margin_top = -42.0
+margin_right = 224.0
+margin_bottom = 86.0
+texture = ExtResource( 4 )

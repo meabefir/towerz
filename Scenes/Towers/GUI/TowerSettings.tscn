@@ -1,0 +1,94 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Towers/TowerSettings.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Towers/GUI/TowerMode.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Towers/GUI/Upgrade/Upgrades.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Towers/GUI/SellButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Towers/GUI/ConfirmationPopup.tscn" type="PackedScene" id=5]
+
+[sub_resource type="Animation" id=1]
+resource_name = "close"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 10 ),
+"update": 0,
+"values": [ Vector2( 736, 0 ), Vector2( 1024, 0 ) ]
+}
+tracks/1/type = "method"
+tracks/1/path = NodePath(".")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0.2 ),
+"transitions": PoolRealArray( 1 ),
+"values": [ {
+"args": [  ],
+"method": "queue_free"
+} ]
+}
+
+[sub_resource type="Animation" id=2]
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2 ),
+"transitions": PoolRealArray( 1, 10 ),
+"update": 0,
+"values": [ Vector2( 1024, 0 ), Vector2( 736, 0 ) ]
+}
+
+[node name="TowerSettings" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 736.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+confirmationPopupScene = ExtResource( 5 )
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.013
+margin_bottom = 0.200012
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TowerMode" parent="." instance=ExtResource( 2 )]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 32.0
+margin_top = 32.0
+margin_right = -32.0
+margin_bottom = -488.0
+
+[node name="Upgrades" parent="." instance=ExtResource( 3 )]
+margin_left = 32.0
+margin_top = 144.0
+margin_right = -32.0
+margin_bottom = -312.0
+
+[node name="SellButton" parent="." instance=ExtResource( 4 )]
+margin_left = 48.0
+margin_top = 512.0
+margin_right = -48.0
+margin_bottom = -40.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/close = SubResource( 1 )
+anims/open = SubResource( 2 )
