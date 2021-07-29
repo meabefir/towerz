@@ -1,11 +1,12 @@
 extends Node2D
 
-export(Resource) onready var enemyData
 export(NodePath) onready var pathNode = get_node(pathNode)
 
 var spawnerScene = preload("res://Scenes/Level/Spawner.tscn")
 
 func _ready():
+	var enemyData = get_parent().levelData.enemiesInLevel
+	
 	for i in range(enemyData.enemyType.size()):
 		addSpawner(enemyData.enemyType[i], enemyData.nrOfEnemies[i],enemyData.startDelay[i],enemyData.delay[i])
 

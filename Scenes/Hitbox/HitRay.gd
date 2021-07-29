@@ -6,6 +6,9 @@ signal hurt_enemy
 
 var enemiesHit = []
 
+func setDamageInfo(resource):
+	damageInfo = resource
+
 func disable():
 	enabled = false
 

@@ -2,6 +2,11 @@ extends Node2D
 
 class_name Tower
 
+enum TOWER_TYPE {
+	MACHINE_GUN,
+	MISSILE_LAUNCHER
+}
+
 enum UPGRADE_TYPE {
 	BULLET_DAMAGE,
 	RELOAD_SPEED,
@@ -12,7 +17,8 @@ enum TARGETING_MODES {
 	CLOSEST,
 	FIRST,
 	LAST,
-	MOST_DANGEROUS
+	STRONGEST,
+	WEAKEST
 }
 
 enum STATE {
@@ -25,14 +31,15 @@ signal selected
 signal deselected
 
 export(Resource) var settingsData
-export(TARGETING_MODES) var targetingMode setget setTargetingMode
-export var rotationSpeed: float
-export var fireRate: float
 export(PackedScene) var ammoScene
 export(Resource) var damageResource
+export(TARGETING_MODES) var targetingMode setget setTargetingMode
+export var rotationSpeed: float
+export var fireRate: float setget setFireRate
 export var shootingAngle: float
 export var recoil: float = 40
 export var recoilRecover: float = 5
+export var radius: float setget setRadius
 
 onready var searchArea = get_node("SearchArea")
 onready var shootTimer = get_node("ShootTimer")
@@ -50,9 +57,26 @@ var currentRecoil = 0
 var canPickRandomRotation = true
 var idleWait = [2,4]
 
-var selected = false
+var selected = false setget setSelected
 var justEntered = true
 var justLeft = false
+
+func setFireRate(value):
+	fireRate = value
+	
+	if not shootTimer:
+		return
+	shootTimer.wait_time = value
+
+func setRadius(value):
+	radius = value
+
+	if not searchArea:
+		return
+	searchArea.setRadius(radius)
+
+func setSelected(value):
+	selected = value
 
 func setState(value):
 	state = value
@@ -79,6 +103,8 @@ func _ready():
 	shootTimer.wait_time = fireRate
 	
 	gun.rotation = rand_range(0, 2*PI)
+	
+	self.radius = radius
 
 func handleEvents(event):
 	if state == STATE.DEAD:
@@ -108,7 +134,7 @@ func handleEvents(event):
 func select():
 	if selected:
 		return
-	selected = true
+	self.selected = true
 	useOutline()
 	animationPlayer.play("select")
 	emit_signal("selected", self)
@@ -116,7 +142,7 @@ func select():
 func deselect():
 	if !selected:
 		return
-	selected = false
+	self.selected = false
 	useOutline(false)
 	emit_signal("deselected", self)
 
@@ -211,7 +237,14 @@ func destroy():
 	self.state = STATE.DEAD
 	animationPlayer.play("dead")
 
+func increaseSellPrice(ammount):
+	settingsData.sellPrice += ammount
+
 func upgrade(type, increase):
 	match type:
 		UPGRADE_TYPE.BULLET_DAMAGE:
 			damageResource.damage += increase
+		UPGRADE_TYPE.RADIUS:
+			self.radius += increase
+		UPGRADE_TYPE.RELOAD_SPEED:
+			self.fireRate += increase

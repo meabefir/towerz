@@ -50,6 +50,16 @@ _global_script_classes=[ {
 "path": "res://Scenes/Towers/Tower.gd"
 }, {
 "base": "Resource",
+"class": "TowerPrices",
+"language": "GDScript",
+"path": "res://ResourceTemplates/TowerPrices.gd"
+}, {
+"base": "Resource",
+"class": "TowersUnlockedInLevel",
+"language": "GDScript",
+"path": "res://ResourceTemplates/TowersUnlockedInLevel.gd"
+}, {
+"base": "Resource",
 "class": "UpgradeInfo",
 "language": "GDScript",
 "path": "res://ResourceTemplates/UpgradeInfo.gd"
@@ -63,6 +73,8 @@ _global_script_class_icons={
 "SettingsData": "",
 "TargetingModes": "",
 "Tower": "",
+"TowerPrices": "",
+"TowersUnlockedInLevel": "",
 "UpgradeInfo": ""
 }
 
@@ -82,6 +94,39 @@ Global="*res://Autoload/Global.tscn"
 window/vsync/use_vsync=false
 window/stretch/mode="2d"
 window/stretch/aspect="keep"
+
+[input]
+
+click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+right_click={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":2,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
 
 [input_devices]
 

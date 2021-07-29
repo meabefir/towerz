@@ -2,9 +2,8 @@
 
 [ext_resource path="res://ResourceTemplates/EnemyStats.gd" type="Script" id=1]
 
-
 [resource]
 script = ExtResource( 1 )
-speed = 75.0
+speed = 300.0
 health = 150.0
 danger = 30.0

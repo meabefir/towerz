@@ -9,6 +9,7 @@ func _ready():
 	add_child(killTimer)
 	killTimer.start()
 
+
 func hurtEnemy(enemy):
 	bounces -= 1
 	if bounces == 0:

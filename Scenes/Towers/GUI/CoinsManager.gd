@@ -2,7 +2,7 @@ extends Control
 
 onready var label = get_node("Label")
 
-var coins = 0
+var coins = 0 setget setCoins
 var visibleValue = 0
 var lerpSpeed = .02
 

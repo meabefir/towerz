@@ -15,15 +15,19 @@ func towerSelected(_tower):
 	if currentTowerMenu != null:
 		currentTowerMenu.close()
 		currentTowerMenu = null
+		currentSelectedTower.deselect()
 		currentSelectedTower = null
 	
 	currentTowerMenu = towerMenuScene.instance()
 	currentTowerMenu.tower = _tower
+
 	add_child(currentTowerMenu)
 	
 	currentSelectedTower = _tower
 	
 func towerDeselected(_tower):
+	if not currentTowerMenu:
+		return
 	if currentSelectedTower == _tower:
 		currentTowerMenu.close()
 		currentTowerMenu = null

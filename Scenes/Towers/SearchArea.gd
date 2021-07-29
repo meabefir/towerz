@@ -1,5 +1,10 @@
 extends Area2D
 
+onready var collision: CollisionShape2D = get_node("CollisionShape2D")
+
+func setRadius(value):
+	collision.shape.radius = value
+
 func search():
 	var areas = get_overlapping_areas()
 	
@@ -43,7 +48,7 @@ func search():
 					min_offset = curr_offset
 					get_parent().target = area
 			
-		Tower.TARGETING_MODES.MOST_DANGEROUS:
+		Tower.TARGETING_MODES.STRONGEST:
 			var max_danger = areas[0].enemy.danger
 			get_parent().target = areas[0]
 			
@@ -52,6 +57,17 @@ func search():
 				var curr_danger = area.enemy.danger
 				if curr_danger > max_danger:
 					max_danger = curr_danger
+					get_parent().target = area
+		
+		Tower.TARGETING_MODES.WEAKEST:
+			var min_danger = areas[0].enemy.danger
+			get_parent().target = areas[0]
+			
+			areas.pop_front()
+			for area in areas:
+				var curr_danger = area.enemy.danger
+				if curr_danger < min_danger:
+					min_danger = curr_danger
 					get_parent().target = area
 		
 	

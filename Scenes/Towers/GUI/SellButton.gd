@@ -22,6 +22,7 @@ func _on_TextureButton_pressed():
 
 func sell():
 	# add money
+	Global.currentLevel.gui.coinsManager.coins += sellValue
 	# tbi
 	get_parent().tower.destroy()
 

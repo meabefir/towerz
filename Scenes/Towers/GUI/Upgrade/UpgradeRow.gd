@@ -32,7 +32,6 @@ func _ready():
 		previous = new_upgrade_button
 
 func checkFree():
-	print(container.get_child_count())
 	if container.get_child_count() == 1:
 		queue_free()
 

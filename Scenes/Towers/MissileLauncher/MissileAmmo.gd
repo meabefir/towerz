@@ -1,6 +1,7 @@
 extends "res://Scenes/Towers/Ammo.gd"
 
 export(PackedScene) var explosionScene
+var explosionDamageResource = null
 
 func _ready():
 	var killTimer = Timer.new()
@@ -14,6 +15,11 @@ func hurtEnemy(enemy):
 	
 func explode():
 	var new_explosion = explosionScene.instance()
-	get_parent().add_child(new_explosion)
 	new_explosion.global_position = global_position
+	get_parent().add_child(new_explosion)
+	if explosionDamageResource != null:
+		new_explosion.setDamageResource(explosionDamageResource)
 	queue_free()
+
+func setDamageResource(resource):
+	explosionDamageResource = resource

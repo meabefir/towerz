@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Towers/MissileLauncher/TowerMissileLauncher.gd" type="Script" id=1]
 [ext_resource path="res://assets/PNG/Retina/towerDefense_tile182.png" type="Texture" id=2]
@@ -9,13 +9,16 @@
 [ext_resource path="res://Scenes/Towers/MissileLauncher/MissilePlaceholder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Towers/MissileLauncher/MissileAmmo.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Towers/DamageInfo/MissileExplosion.tres" type="Resource" id=9]
+[ext_resource path="res://Scenes/Towers/RadiusNode.tscn" type="PackedScene" id=10]
 
 [sub_resource type="ShaderMaterial" id=1]
+resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
 shader_param/line_thickness = 4.0
 
 [sub_resource type="CircleShape2D" id=2]
+resource_local_to_scene = true
 radius = 500.0
 
 [sub_resource type="Animation" id=3]
@@ -180,16 +183,19 @@ tracks/2/keys = {
 material = SubResource( 1 )
 script = ExtResource( 1 )
 settingsData = ExtResource( 6 )
-rotationSpeed = 90.0
-fireRate = 1.0
 ammoScene = ExtResource( 8 )
 damageResource = ExtResource( 9 )
+rotationSpeed = 90.0
+fireRate = 1.0
 shootingAngle = 0.75
 recoil = 60.0
 recoilRecover = 3.0
+radius = 500.0
 
 [node name="Base" type="Sprite" parent="."]
 texture = ExtResource( 2 )
+
+[node name="RadiusNode" parent="." instance=ExtResource( 10 )]
 
 [node name="Gun" type="Sprite" parent="."]
 texture = ExtResource( 3 )

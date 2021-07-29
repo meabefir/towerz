@@ -10,7 +10,7 @@ script = ExtResource( 3 )
 killAfter = 3.0
 speed = 1000.0
 homingSpeed = 10.0
-homingAngle = 1.0
+homingAngle = 0.7
 fadeDuration = 0.25
 
 [node name="HitRay" parent="." instance=ExtResource( 1 )]

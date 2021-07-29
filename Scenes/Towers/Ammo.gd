@@ -40,3 +40,6 @@ func fadeOut():
 	fade_tween.start()
 	yield(get_tree().create_timer(fadeDuration), "timeout")
 	queue_free()
+
+func setDamageResource(resource):
+	hitbox.setDamageInfo(resource)

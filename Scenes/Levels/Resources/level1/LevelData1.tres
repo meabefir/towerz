@@ -1,0 +1,11 @@
+[gd_resource type="Resource" load_steps=4 format=2]
+
+[ext_resource path="res://ResourceTemplates/LevelData.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Levels/Resources/level1/TowersUnlockedInLevel1.tres" type="Resource" id=2]
+[ext_resource path="res://Scenes/Levels/Resources/level1/EnemiesInLvl1.tres" type="Resource" id=3]
+
+[resource]
+script = ExtResource( 1 )
+coins = 999999.0
+towersUnlocked = ExtResource( 2 )
+enemiesInLevel = ExtResource( 3 )

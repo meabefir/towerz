@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://ResourceTemplates/EnemiesInLevel.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+enemyType = [ 0, 1, 2 ]
+nrOfEnemies = [ 20, 20, 20 ]
+startDelay = [ 0.0, 8.0, 16.0 ]
+delay = [ 0.4, 0.4, 0.4 ]

@@ -1,0 +1,489 @@
+[gd_scene load_steps=24 format=2]
+
+[ext_resource path="res://Scenes/Level/Level.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/PNG/Default size/towerDefense_tile020.png" type="Texture" id=2]
+[ext_resource path="res://assets/PNG/Default size/towerDefense_tile019.png" type="Texture" id=3]
+[ext_resource path="res://assets/PNG/Default size/towerDefense_tile021.png" type="Texture" id=4]
+[ext_resource path="res://assets/PNG/Default size/towerDefense_tile134.png" type="Texture" id=5]
+[ext_resource path="res://assets/PNG/Default size/towerDefense_tile132.png" type="Texture" id=6]
+[ext_resource path="res://assets/PNG/Default size/towerDefense_tile131.png" type="Texture" id=7]
+[ext_resource path="res://assets/PNG/Default size/towerDefense_tile136.png" type="Texture" id=8]
+[ext_resource path="res://ResourceTemplates/DamageType.gd" type="Script" id=9]
+[ext_resource path="res://Shaders/Outline.shader" type="Shader" id=10]
+[ext_resource path="res://ResourceTemplates/UpgradeInfo.gd" type="Script" id=11]
+[ext_resource path="res://ResourceTemplates/SettingsData.gd" type="Script" id=12]
+[ext_resource path="res://ResourceTemplates/TargetingModes.gd" type="Script" id=13]
+[ext_resource path="res://Scenes/Towers/MachineGun/TowerMachineGun.tscn" type="PackedScene" id=14]
+[ext_resource path="res://Scenes/Towers/MissileLauncher/TowerMissileLauncher.tscn" type="PackedScene" id=15]
+[ext_resource path="res://Scenes/Levels/Resources/level2/LevelData2.tres" type="Resource" id=16]
+
+[sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
+shader = ExtResource( 10 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 4.0
+
+[sub_resource type="ShaderMaterial" id=3]
+resource_local_to_scene = true
+shader = ExtResource( 10 )
+shader_param/line_color = Color( 1, 1, 1, 1 )
+shader_param/line_thickness = 4.0
+
+[sub_resource type="Resource" id=4]
+resource_local_to_scene = true
+script = ExtResource( 13 )
+modes = [ 0, 1, 2, 3, 4 ]
+
+[sub_resource type="Resource" id=5]
+resource_local_to_scene = true
+script = ExtResource( 11 )
+type = [ 0, 2, 1 ]
+data = [ [ [ 5.0, 100.0 ], [ 5.0, 200.0 ], [ 5.0, 300.0 ] ], [ [ 50.0, 100.0 ], [ 100.0, 300.0 ], [ 100.0, 600.0 ] ], [ [ -0.1, 100.0 ], [ -0.2, 200.0 ], [ -0.4, 600.0 ] ] ]
+
+[sub_resource type="Resource" id=6]
+resource_local_to_scene = true
+script = ExtResource( 12 )
+targetingModes = SubResource( 4 )
+upgradeInfo = SubResource( 5 )
+sellPrice = 100.0
+
+[sub_resource type="Resource" id=7]
+resource_local_to_scene = true
+script = ExtResource( 9 )
+damage = 0.0
+
+[sub_resource type="Curve2D" id=1]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 944, 0, 0, 0, 0, 0, 896, -48, 0, 0, 0, 0, 880, -112, 0, 0, 0, 0, 736, -256, 0, 0, 0, 0, 560, -256, 0, 0, 0, 0, 512, -208, 0, 0, 0, 0, 496, -192, 0, 0, 0, 0, 256, -192, 0, 0, 0, 0, -96, -192, 0, 0, 0, 0, -160, -256, 0, 0, 0, 0, -352, -256, 0, 0, 0, 0, -384, -288, 0, 0, 0, 0, -384, -368, 0, 0, 0, 0, -432, -400, 0, 0, 0, 0, -528, -496, 0, 0, 0, 0, -544, -512, 0, 0, 0, 0, -800, -512, 0, 0, 0, 0, -960, -352, 0, 0, 0, 0, -960, -144, 0, 0, 0, 0, -896, -96, 0, 0, 0, 0, -896, 64, 0, 0, 0, 0, -896, 112, 0, 0, 0, 0, -960, 160, 0, 0, 0, 0, -960, 336, 0, 0, 0, 0, -800, 512, 0, 0, 0, 0, -528, 512, 0, 0, 0, 0, -384, 352, 0, 0, 0, 0, -384, 288, 0, 0, 0, 0, -336, 256, 0, 0, 0, 0, -144, 256, 0, 0, 0, 0, -96, 208, 0, 0, 0, 0, -80, 192, 0, 0, 0, 0, 192, 192, 0, 0, 0, 0, 416, 192, 0, 0, 0, 0, 480, 192, 0, 0, 0, 0, 544, 256, 0, 0, 0, 0, 736, 256, 0, 0, 0, 0, 752, 256, 0, 0, 0, 0, 896, 80, 0, 0, 0, 0, 944, 0, 0, 0, 0, 0, 1152, 0 )
+}
+
+[node name="Level2" instance=ExtResource( 1 )]
+levelData = ExtResource( 16 )
+
+[node name="GrassAndDirt" parent="TileMaps" index="0"]
+tile_data = PoolIntArray( -524302, 0, 3, -524301, 0, 131073, -524300, 0, 131073, -524299, 0, 131073, -524298, 0, 131073, -524297, 0, 131073, -524296, 0, 4, -458767, 0, 3, -458766, 0, 131074, -458765, 0, 0, -458764, 0, 1, -458763, 0, 1, -458762, 0, 1, -458761, 0, 2, -458760, 0, 131072, -458759, 0, 4, -393232, 0, 3, -393231, 0, 131074, -393230, 0, 0, -393229, 0, 65540, -393225, 0, 65539, -393224, 0, 2, -393223, 0, 131072, -393222, 0, 4, -327696, 0, 65538, -327695, 0, 0, -327694, 0, 65540, -327688, 0, 65539, -327687, 0, 2, -327686, 0, 65536, -262160, 0, 65538, -262159, 0, 65536, -262151, 0, 65538, -262150, 0, 131072, -262149, 0, 131073, -262148, 0, 131073, -262147, 0, 131073, -262146, 0, 4, -327673, 0, 3, -327672, 0, 131073, -327671, 0, 131073, -327670, 0, 131073, -327669, 0, 131073, -327668, 0, 4, -196624, 0, 65538, -196623, 0, 65536, -196615, 0, 65539, -196614, 0, 1, -196613, 0, 1, -196612, 0, 1, -196611, 0, 2, -196610, 0, 131072, -196609, 0, 131073, -262144, 0, 131073, -262143, 0, 131073, -262142, 0, 131073, -262141, 0, 131073, -262140, 0, 131073, -262139, 0, 131073, -262138, 0, 131073, -262137, 0, 131074, -262136, 0, 0, -262135, 0, 1, -262134, 0, 1, -262133, 0, 2, -262132, 0, 131072, -262131, 0, 4, -131088, 0, 65538, -131087, 0, 131072, -131086, 0, 4, -131075, 0, 65539, -131074, 0, 1, -131073, 0, 1, -196608, 0, 1, -196607, 0, 1, -196606, 0, 1, -196605, 0, 1, -196604, 0, 1, -196603, 0, 1, -196602, 0, 1, -196601, 0, 1, -196600, 0, 65540, -196597, 0, 65539, -196596, 0, 2, -196595, 0, 131072, -196594, 0, 4, -65552, 0, 65539, -65551, 0, 2, -65550, 0, 65536, -131060, 0, 65539, -131059, 0, 2, -131058, 0, 65536, -15, 0, 65538, -14, 0, 65536, -65523, 0, 65538, -65522, 0, 131072, -65521, 0, 131073, -65520, 0, 131073, -65519, 0, 131073, -65518, 0, 4, 65521, 0, 65538, 65522, 0, 65536, 13, 0, 65538, 14, 0, 0, 15, 0, 1, 16, 0, 1, 17, 0, 1, 18, 0, 65540, 131056, 0, 3, 131057, 0, 131074, 131058, 0, 65536, 65548, 0, 3, 65549, 0, 131074, 65550, 0, 65536, 196592, 0, 65538, 196593, 0, 0, 196594, 0, 65540, 196605, 0, 3, 196606, 0, 131073, 196607, 0, 131073, 131072, 0, 131073, 131073, 0, 131073, 131074, 0, 131073, 131075, 0, 131073, 131076, 0, 131073, 131077, 0, 131073, 131078, 0, 131073, 131079, 0, 131073, 131080, 0, 4, 131083, 0, 3, 131084, 0, 131074, 131085, 0, 0, 131086, 0, 65540, 262128, 0, 65538, 262129, 0, 65536, 262137, 0, 3, 262138, 0, 131073, 262139, 0, 131073, 262140, 0, 131073, 262141, 0, 131074, 262142, 0, 0, 262143, 0, 1, 196608, 0, 1, 196609, 0, 1, 196610, 0, 1, 196611, 0, 1, 196612, 0, 1, 196613, 0, 1, 196614, 0, 1, 196615, 0, 2, 196616, 0, 131072, 196617, 0, 131073, 196618, 0, 131073, 196619, 0, 131074, 196620, 0, 0, 196621, 0, 65540, 327664, 0, 65538, 327665, 0, 65536, 327673, 0, 65538, 327674, 0, 0, 327675, 0, 1, 327676, 0, 1, 327677, 0, 1, 327678, 0, 65540, 262151, 0, 65539, 262152, 0, 1, 262153, 0, 1, 262154, 0, 1, 262155, 0, 1, 262156, 0, 65540, 393200, 0, 65538, 393201, 0, 131072, 393202, 0, 4, 393208, 0, 3, 393209, 0, 131074, 393210, 0, 65536, 458736, 0, 65539, 458737, 0, 2, 458738, 0, 131072, 458739, 0, 4, 458743, 0, 3, 458744, 0, 131074, 458745, 0, 0, 458746, 0, 65540, 524273, 0, 65539, 524274, 0, 2, 524275, 0, 131072, 524276, 0, 131073, 524277, 0, 131073, 524278, 0, 131073, 524279, 0, 131074, 524280, 0, 0, 524281, 0, 65540, 589810, 0, 65539, 589811, 0, 1, 589812, 0, 1, 589813, 0, 1, 589814, 0, 1, 589815, 0, 1, 589816, 0, 65540 )
+
+[node name="SandAndDirt" parent="TileMaps" index="1"]
+tile_data = PoolIntArray( -655379, 0, 196611, -655378, 0, 327681, -655377, 0, 327681, -655376, 0, 327681, -655375, 0, 327681, -655374, 0, 327681, -655373, 0, 327681, -655372, 0, 327681, -655371, 0, 327681, -655370, 0, 327681, -655369, 0, 327681, -655368, 0, 327681, -655367, 0, 327681, -655366, 0, 327681, -655365, 0, 327681, -655364, 0, 327681, -655363, 0, 327681, -655362, 0, 327681, -655361, 0, 327681, -720896, 0, 327681, -720895, 0, 327681, -720894, 0, 327681, -720893, 0, 327681, -720892, 0, 327681, -720891, 0, 327681, -720890, 0, 327681, -720889, 0, 327681, -720888, 0, 327681, -720887, 0, 327681, -720886, 0, 327681, -720885, 0, 327681, -720884, 0, 327681, -720883, 0, 327681, -720882, 0, 327681, -720881, 0, 327681, -720880, 0, 196612, -589843, 0, 262146, -589842, 0, 65542, -589841, 0, 65542, -589840, 0, 65542, -589839, 0, 196608, -589838, 0, 196609, -589837, 0, 196609, -589836, 0, 196609, -589835, 0, 196609, -589834, 0, 196609, -589833, 0, 196609, -589832, 0, 196609, -589831, 0, 196610, -589830, 0, 65542, -589829, 0, 65542, -589828, 0, 65542, -589827, 0, 327684, -589826, 0, 65542, -589825, 0, 65542, -655360, 0, 65542, -655359, 0, 65542, -655358, 0, 65542, -655357, 0, 327684, -655356, 0, 327684, -655355, 0, 65542, -655354, 0, 65542, -655353, 0, 327684, -655352, 0, 327684, -655351, 0, 65542, -655350, 0, 327684, -655349, 0, 65542, -655348, 0, 65542, -655347, 0, 65542, -655346, 0, 65542, -655345, 0, 65542, -655344, 0, 262144, -524307, 0, 262146, -524306, 0, 327684, -524305, 0, 65542, -524304, 0, 196608, -524303, 0, 262148, -524295, 0, 262147, -524294, 0, 196610, -524293, 0, 327684, -524292, 0, 327684, -524291, 0, 327684, -524290, 0, 65542, -524289, 0, 65542, -589824, 0, 327684, -589823, 0, 327684, -589822, 0, 65542, -589821, 0, 327684, -589820, 0, 327684, -589819, 0, 65542, -589818, 0, 327684, -589817, 0, 65542, -589816, 0, 65542, -589815, 0, 327684, -589814, 0, 65542, -589813, 0, 65542, -589812, 0, 65542, -589811, 0, 327684, -589810, 0, 65542, -589809, 0, 327684, -589808, 0, 262144, -458771, 0, 262146, -458770, 0, 327684, -458769, 0, 196608, -458768, 0, 262148, -458758, 0, 262147, -458757, 0, 196610, -458756, 0, 327684, -458755, 0, 327684, -458754, 0, 65542, -458753, 0, 65542, -524288, 0, 65542, -524287, 0, 327684, -524286, 0, 327684, -524285, 0, 327684, -524284, 0, 65542, -524283, 0, 327684, -524282, 0, 65542, -524281, 0, 65542, -524280, 0, 327684, -524279, 0, 65542, -524278, 0, 65542, -524277, 0, 65542, -524276, 0, 65542, -524275, 0, 65542, -524274, 0, 65542, -524273, 0, 65542, -524272, 0, 262144, -393235, 0, 262146, -393234, 0, 327684, -393233, 0, 262144, -393228, 0, 196611, -393227, 0, 327681, -393226, 0, 196612, -393221, 0, 262146, -393220, 0, 327684, -393219, 0, 327684, -393218, 0, 65542, -393217, 0, 327684, -458752, 0, 65542, -458751, 0, 65542, -458750, 0, 65542, -458749, 0, 65542, -458748, 0, 65542, -458747, 0, 327684, -458746, 0, 327684, -458745, 0, 327684, -458744, 0, 327684, -458743, 0, 327684, -458742, 0, 65542, -458741, 0, 65542, -458740, 0, 65542, -458739, 0, 65542, -458738, 0, 65542, -458737, 0, 327684, -458736, 0, 262144, -327699, 0, 262146, -327698, 0, 65542, -327697, 0, 262144, -327693, 0, 196611, -327692, 0, 327682, -327691, 0, 65542, -327690, 0, 327680, -327689, 0, 196612, -327685, 0, 262147, -327684, 0, 196609, -327683, 0, 196609, -327682, 0, 196609, -327681, 0, 196610, -393216, 0, 65542, -393215, 0, 65542, -393214, 0, 65542, -393213, 0, 327684, -393212, 0, 327684, -393211, 0, 65542, -393210, 0, 196608, -393209, 0, 196609, -393208, 0, 196609, -393207, 0, 196609, -393206, 0, 196609, -393205, 0, 196609, -393204, 0, 196609, -393203, 0, 196610, -393202, 0, 327684, -393201, 0, 65542, -393200, 0, 262144, -262163, 0, 262146, -262162, 0, 327684, -262161, 0, 262144, -262158, 0, 196611, -262157, 0, 327682, -262156, 0, 327684, -262155, 0, 327684, -262154, 0, 65542, -262153, 0, 327680, -262152, 0, 196612, -262145, 0, 262147, -327680, 0, 196609, -327679, 0, 196609, -327678, 0, 196609, -327677, 0, 196609, -327676, 0, 196609, -327675, 0, 196609, -327674, 0, 262148, -327667, 0, 262147, -327666, 0, 196610, -327665, 0, 327684, -327664, 0, 262144, -196627, 0, 262146, -196626, 0, 65542, -196625, 0, 262144, -196622, 0, 262147, -196621, 0, 196610, -196620, 0, 65542, -196619, 0, 65542, -196618, 0, 65542, -196617, 0, 65542, -196616, 0, 262144, -262130, 0, 262147, -262129, 0, 196610, -262128, 0, 327680, -262127, 0, 196612, -131091, 0, 262146, -131090, 0, 327684, -131089, 0, 262144, -131085, 0, 262146, -131084, 0, 65542, -131083, 0, 327684, -131082, 0, 65542, -131081, 0, 327684, -131080, 0, 327680, -131079, 0, 327681, -131078, 0, 327681, -131077, 0, 327681, -131076, 0, 196612, -196599, 0, 196611, -196598, 0, 196612, -196593, 0, 262146, -196592, 0, 65542, -196591, 0, 262144, -65555, 0, 262146, -65554, 0, 327684, -65553, 0, 262144, -65549, 0, 262146, -65548, 0, 65542, -65547, 0, 327684, -65546, 0, 65542, -65545, 0, 65542, -65544, 0, 327684, -65543, 0, 327684, -65542, 0, 327684, -65541, 0, 65542, -65540, 0, 327680, -65539, 0, 327681, -65538, 0, 327681, -65537, 0, 327681, -131072, 0, 327681, -131071, 0, 327681, -131070, 0, 327681, -131069, 0, 327681, -131068, 0, 327681, -131067, 0, 327681, -131066, 0, 327681, -131065, 0, 327681, -131064, 0, 327681, -131063, 0, 327682, -131062, 0, 327680, -131061, 0, 196612, -131057, 0, 262147, -131056, 0, 196609, -131055, 0, 262148, -19, 0, 262146, -18, 0, 327684, -17, 0, 327680, -16, 0, 196612, -13, 0, 262146, -12, 0, 327684, -11, 0, 65542, -10, 0, 327684, -9, 0, 327684, -8, 0, 327684, -7, 0, 65542, -6, 0, 327684, -5, 0, 327684, -4, 0, 327684, -3, 0, 65542, -2, 0, 327684, -1, 0, 327684, -65536, 0, 327684, -65535, 0, 65542, -65534, 0, 65542, -65533, 0, 327684, -65532, 0, 327684, -65531, 0, 327684, -65530, 0, 65542, -65529, 0, 65542, -65528, 0, 65542, -65527, 0, 65542, -65526, 0, 65542, -65525, 0, 327680, -65524, 0, 196612, 65517, 0, 262146, 65518, 0, 65542, 65519, 0, 196608, 65520, 0, 262148, 65523, 0, 262146, 65524, 0, 327684, 65525, 0, 327684, 65526, 0, 327684, 65527, 0, 327684, 65528, 0, 65542, 65529, 0, 327684, 65530, 0, 327684, 65531, 0, 65542, 65532, 0, 327684, 65533, 0, 327684, 65534, 0, 65542, 65535, 0, 327684, 0, 0, 327684, 1, 0, 65542, 2, 0, 327684, 3, 0, 65542, 4, 0, 65542, 5, 0, 65542, 6, 0, 327684, 7, 0, 65542, 8, 0, 65542, 9, 0, 65542, 10, 0, 65542, 11, 0, 196608, 12, 0, 262148, 131053, 0, 262146, 131054, 0, 65542, 131055, 0, 262144, 131059, 0, 262146, 131060, 0, 327684, 131061, 0, 65542, 131062, 0, 65542, 131063, 0, 65542, 131064, 0, 65542, 131065, 0, 65542, 131066, 0, 65542, 131067, 0, 65542, 131068, 0, 196608, 131069, 0, 196609, 131070, 0, 196609, 131071, 0, 196609, 65536, 0, 196609, 65537, 0, 196609, 65538, 0, 196609, 65539, 0, 196609, 65540, 0, 196609, 65541, 0, 196609, 65542, 0, 196609, 65543, 0, 196609, 65544, 0, 196609, 65545, 0, 196610, 65546, 0, 196608, 65547, 0, 262148, 65551, 0, 196611, 65552, 0, 327681, 65553, 0, 196612, 196589, 0, 262146, 196590, 0, 327684, 196591, 0, 262144, 196595, 0, 262146, 196596, 0, 327684, 196597, 0, 327684, 196598, 0, 327684, 196599, 0, 327684, 196600, 0, 196608, 196601, 0, 196609, 196602, 0, 196609, 196603, 0, 196609, 196604, 0, 262148, 131081, 0, 262147, 131082, 0, 262148, 131087, 0, 262146, 131088, 0, 327684, 131089, 0, 262144, 262125, 0, 262146, 262126, 0, 327684, 262127, 0, 262144, 262130, 0, 196611, 262131, 0, 327682, 262132, 0, 327684, 262133, 0, 65542, 262134, 0, 327684, 262135, 0, 327684, 262136, 0, 262144, 196622, 0, 196611, 196623, 0, 327682, 196624, 0, 196608, 196625, 0, 262148, 327661, 0, 262146, 327662, 0, 327684, 327663, 0, 262144, 327666, 0, 262147, 327667, 0, 196610, 327668, 0, 65542, 327669, 0, 65542, 327670, 0, 327684, 327671, 0, 196608, 327672, 0, 262148, 327679, 0, 196611, 262144, 0, 327681, 262145, 0, 327681, 262146, 0, 327681, 262147, 0, 327681, 262148, 0, 327681, 262149, 0, 327681, 262150, 0, 196612, 262157, 0, 196611, 262158, 0, 327682, 262159, 0, 65542, 262160, 0, 262144, 393197, 0, 262146, 393198, 0, 65542, 393199, 0, 262144, 393203, 0, 262147, 393204, 0, 196610, 393205, 0, 327684, 393206, 0, 196608, 393207, 0, 262148, 393211, 0, 196611, 393212, 0, 327681, 393213, 0, 327681, 393214, 0, 327681, 393215, 0, 327682, 327680, 0, 327684, 327681, 0, 65542, 327682, 0, 327684, 327683, 0, 65542, 327684, 0, 327684, 327685, 0, 327684, 327686, 0, 327680, 327687, 0, 327681, 327688, 0, 327681, 327689, 0, 327681, 327690, 0, 327681, 327691, 0, 327681, 327692, 0, 327681, 327693, 0, 327682, 327694, 0, 327684, 327695, 0, 327684, 327696, 0, 262144, 458733, 0, 262146, 458734, 0, 327684, 458735, 0, 262144, 458740, 0, 262147, 458741, 0, 196609, 458742, 0, 262148, 458747, 0, 262146, 458748, 0, 65542, 458749, 0, 65542, 458750, 0, 327684, 458751, 0, 327684, 393216, 0, 65542, 393217, 0, 65542, 393218, 0, 327684, 393219, 0, 65542, 393220, 0, 327684, 393221, 0, 327684, 393222, 0, 65542, 393223, 0, 65542, 393224, 0, 65542, 393225, 0, 327684, 393226, 0, 327684, 393227, 0, 327684, 393228, 0, 327684, 393229, 0, 65542, 393230, 0, 65542, 393231, 0, 327684, 393232, 0, 262144, 524269, 0, 262146, 524270, 0, 65542, 524271, 0, 327680, 524272, 0, 196612, 524282, 0, 196611, 524283, 0, 327682, 524284, 0, 65542, 524285, 0, 65542, 524286, 0, 327684, 524287, 0, 65542, 458752, 0, 327684, 458753, 0, 327684, 458754, 0, 327684, 458755, 0, 65542, 458756, 0, 327684, 458757, 0, 327684, 458758, 0, 327684, 458759, 0, 65542, 458760, 0, 65542, 458761, 0, 327684, 458762, 0, 327684, 458763, 0, 327684, 458764, 0, 327684, 458765, 0, 65542, 458766, 0, 327684, 458767, 0, 65542, 458768, 0, 262144, 589805, 0, 262146, 589806, 0, 327684, 589807, 0, 327684, 589808, 0, 327680, 589809, 0, 196612, 589817, 0, 196611, 589818, 0, 327682, 589819, 0, 65542, 589820, 0, 327684, 589821, 0, 65542, 589822, 0, 327684, 589823, 0, 65542, 524288, 0, 65542, 524289, 0, 65542, 524290, 0, 65542, 524291, 0, 65542, 524292, 0, 327684, 524293, 0, 327684, 524294, 0, 65542, 524295, 0, 327684, 524296, 0, 65542, 524297, 0, 327684, 524298, 0, 327684, 524299, 0, 65542, 524300, 0, 65542, 524301, 0, 65542, 524302, 0, 327684, 524303, 0, 65542, 524304, 0, 262144, 655341, 0, 262146, 655342, 0, 327684, 655343, 0, 65542, 655344, 0, 327684, 655345, 0, 327680, 655346, 0, 327681, 655347, 0, 327681, 655348, 0, 327681, 655349, 0, 327681, 655350, 0, 327681, 655351, 0, 327681, 655352, 0, 327681, 655353, 0, 327682, 655354, 0, 65542, 655355, 0, 65542, 655356, 0, 327684, 655357, 0, 65542, 655358, 0, 327684, 655359, 0, 65542, 589824, 0, 65542, 589825, 0, 65542, 589826, 0, 65542, 589827, 0, 65542, 589828, 0, 327684, 589829, 0, 327684, 589830, 0, 327684, 589831, 0, 327684, 589832, 0, 327684, 589833, 0, 327684, 589834, 0, 327684, 589835, 0, 65542, 589836, 0, 65542, 589837, 0, 327684, 589838, 0, 327684, 589839, 0, 65542, 589840, 0, 262144, 720877, 0, 262147, 720878, 0, 196609, 720879, 0, 196609, 720880, 0, 196609, 720881, 0, 196609, 720882, 0, 196609, 720883, 0, 196609, 720884, 0, 196609, 720885, 0, 196609, 720886, 0, 196609, 720887, 0, 196609, 720888, 0, 196609, 720889, 0, 196609, 720890, 0, 196609, 720891, 0, 196609, 720892, 0, 196609, 720893, 0, 196609, 720894, 0, 196609, 720895, 0, 196609, 655360, 0, 196609, 655361, 0, 196609, 655362, 0, 196609, 655363, 0, 196609, 655364, 0, 196609, 655365, 0, 196609, 655366, 0, 196609, 655367, 0, 196609, 655368, 0, 196609, 655369, 0, 196609, 655370, 0, 196609, 655371, 0, 196609, 655372, 0, 196609, 655373, 0, 196609, 655374, 0, 196609, 655375, 0, 196609, 655376, 0, 262148 )
+
+[node name="LevelCamera" parent="." index="1"]
+zoom = Vector2( 2, 2 )
+
+[node name="towerDefense_tile134" type="Sprite" parent="Environment" index="0"]
+position = Vector2( -752, 240 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile135" type="Sprite" parent="Environment" index="1"]
+position = Vector2( -656, 320 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile136" type="Sprite" parent="Environment" index="2"]
+position = Vector2( -640, 240 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile137" type="Sprite" parent="Environment" index="3"]
+position = Vector2( -720, 96 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile138" type="Sprite" parent="Environment" index="4"]
+position = Vector2( -592, 80 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile139" type="Sprite" parent="Environment" index="5"]
+position = Vector2( -736, -64 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile140" type="Sprite" parent="Environment" index="6"]
+position = Vector2( -624, -64 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile141" type="Sprite" parent="Environment" index="7"]
+position = Vector2( -480, 16 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile142" type="Sprite" parent="Environment" index="8"]
+position = Vector2( -688, -208 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile143" type="Sprite" parent="Environment" index="9"]
+position = Vector2( -768, -272 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile144" type="Sprite" parent="Environment" index="10"]
+position = Vector2( -640, -320 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile145" type="Sprite" parent="Environment" index="11"]
+position = Vector2( -560, -224 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile146" type="Sprite" parent="Environment" index="12"]
+position = Vector2( -464, -128 )
+texture = ExtResource( 5 )
+
+[node name="towerDefense_tile132" type="Sprite" parent="Environment" index="13"]
+position = Vector2( -736, 320 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile133" type="Sprite" parent="Environment" index="14"]
+position = Vector2( -672, 400 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile147" type="Sprite" parent="Environment" index="15"]
+position = Vector2( -528, 224 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile148" type="Sprite" parent="Environment" index="16"]
+position = Vector2( -368, 128 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile149" type="Sprite" parent="Environment" index="17"]
+position = Vector2( -672, 144 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile150" type="Sprite" parent="Environment" index="18"]
+position = Vector2( -784, 32 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile151" type="Sprite" parent="Environment" index="19"]
+position = Vector2( -656, 0 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile152" type="Sprite" parent="Environment" index="20"]
+position = Vector2( -752, -128 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile153" type="Sprite" parent="Environment" index="21"]
+position = Vector2( -720, -368 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile154" type="Sprite" parent="Environment" index="22"]
+position = Vector2( -576, -144 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile155" type="Sprite" parent="Environment" index="23"]
+position = Vector2( -400, -48 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile156" type="Sprite" parent="Environment" index="24"]
+position = Vector2( -304, -112 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile157" type="Sprite" parent="Environment" index="25"]
+position = Vector2( -512, -48 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile158" type="Sprite" parent="Environment" index="26"]
+position = Vector2( -496, 112 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile159" type="Sprite" parent="Environment" index="27"]
+position = Vector2( -320, 16 )
+texture = ExtResource( 6 )
+
+[node name="towerDefense_tile131" type="Sprite" parent="Environment" index="28"]
+position = Vector2( -560, 240 )
+texture = ExtResource( 7 )
+
+[node name="towerDefense_tile160" type="Sprite" parent="Environment" index="29"]
+position = Vector2( -416, 64 )
+texture = ExtResource( 7 )
+
+[node name="towerDefense_tile161" type="Sprite" parent="Environment" index="30"]
+position = Vector2( -592, 0 )
+texture = ExtResource( 7 )
+
+[node name="towerDefense_tile162" type="Sprite" parent="Environment" index="31"]
+position = Vector2( -784, -192 )
+texture = ExtResource( 7 )
+
+[node name="towerDefense_tile163" type="Sprite" parent="Environment" index="32"]
+position = Vector2( -160, 16 )
+texture = ExtResource( 8 )
+
+[node name="towerDefense_tile164" type="Sprite" parent="Environment" index="33"]
+position = Vector2( 608, -48 )
+texture = ExtResource( 8 )
+
+[node name="towerDefense_tile165" type="Sprite" parent="Environment" index="34"]
+position = Vector2( 416, -16 )
+texture = ExtResource( 8 )
+
+[node name="towerDefense_tile166" type="Sprite" parent="Environment" index="35"]
+position = Vector2( 208, -32 )
+texture = ExtResource( 8 )
+
+[node name="towerDefense_tile167" type="Sprite" parent="Environment" index="36"]
+position = Vector2( 16, 48 )
+texture = ExtResource( 8 )
+
+[node name="towerDefense_tile168" type="Sprite" parent="Environment" index="37"]
+position = Vector2( 640, 80 )
+texture = ExtResource( 8 )
+
+[node name="towerDefense_tile020" type="Sprite" parent="Environment" index="38"]
+position = Vector2( 128, 496 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile021" type="Sprite" parent="Environment" index="39"]
+position = Vector2( 448, 432 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile022" type="Sprite" parent="Environment" index="40"]
+position = Vector2( 304, 48 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile023" type="Sprite" parent="Environment" index="41"]
+position = Vector2( -320, -48 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile024" type="Sprite" parent="Environment" index="42"]
+position = Vector2( -192, -448 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile025" type="Sprite" parent="Environment" index="43"]
+position = Vector2( -624, -240 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile026" type="Sprite" parent="Environment" index="44"]
+position = Vector2( -752, 160 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile027" type="Sprite" parent="Environment" index="45"]
+position = Vector2( -1040, -512 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile028" type="Sprite" parent="Environment" index="46"]
+position = Vector2( 160, -560 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile029" type="Sprite" parent="Environment" index="47"]
+position = Vector2( 288, -400 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile030" type="Sprite" parent="Environment" index="48"]
+position = Vector2( 576, -560 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile031" type="Sprite" parent="Environment" index="49"]
+position = Vector2( 912, -448 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile032" type="Sprite" parent="Environment" index="50"]
+position = Vector2( 928, 496 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile033" type="Sprite" parent="Environment" index="51"]
+position = Vector2( 704, 576 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile034" type="Sprite" parent="Environment" index="52"]
+position = Vector2( 64, 352 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile035" type="Sprite" parent="Environment" index="53"]
+position = Vector2( -208, 544 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile036" type="Sprite" parent="Environment" index="54"]
+position = Vector2( 0, 560 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile037" type="Sprite" parent="Environment" index="55"]
+position = Vector2( -1120, 496 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile019" type="Sprite" parent="Environment" index="56"]
+position = Vector2( -112, 608 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile039" type="Sprite" parent="Environment" index="57"]
+position = Vector2( 240, 480 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile040" type="Sprite" parent="Environment" index="58"]
+position = Vector2( 656, 448 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile041" type="Sprite" parent="Environment" index="59"]
+position = Vector2( 704, 0 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile042" type="Sprite" parent="Environment" index="60"]
+position = Vector2( 656, -96 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile043" type="Sprite" parent="Environment" index="61"]
+position = Vector2( 560, 32 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile044" type="Sprite" parent="Environment" index="62"]
+position = Vector2( 752, 64 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile045" type="Sprite" parent="Environment" index="63"]
+position = Vector2( 720, -512 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile046" type="Sprite" parent="Environment" index="64"]
+position = Vector2( 912, -368 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile047" type="Sprite" parent="Environment" index="65"]
+position = Vector2( 976, 336 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile048" type="Sprite" parent="Environment" index="66"]
+position = Vector2( 1008, 544 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile049" type="Sprite" parent="Environment" index="67"]
+position = Vector2( 416, 592 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile051" type="Sprite" parent="Environment" index="68"]
+position = Vector2( -128, 448 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile052" type="Sprite" parent="Environment" index="69"]
+position = Vector2( 448, 400 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile053" type="Sprite" parent="Environment" index="70"]
+position = Vector2( 1008, 32 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile054" type="Sprite" parent="Environment" index="71"]
+position = Vector2( 1008, -224 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile055" type="Sprite" parent="Environment" index="72"]
+position = Vector2( 528, -400 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile056" type="Sprite" parent="Environment" index="73"]
+position = Vector2( -496, -640 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile057" type="Sprite" parent="Environment" index="74"]
+position = Vector2( -400, -144 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile058" type="Sprite" parent="Environment" index="75"]
+position = Vector2( -576, 160 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile059" type="Sprite" parent="Environment" index="76"]
+position = Vector2( -224, 64 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile060" type="Sprite" parent="Environment" index="77"]
+position = Vector2( -192, -64 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile061" type="Sprite" parent="Environment" index="78"]
+position = Vector2( 352, -80 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile062" type="Sprite" parent="Environment" index="79"]
+position = Vector2( 480, 64 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile063" type="Sprite" parent="Environment" index="80"]
+position = Vector2( -448, 144 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile064" type="Sprite" parent="Environment" index="81"]
+position = Vector2( -688, -144 )
+texture = ExtResource( 4 )
+
+[node name="towerDefense_tile050" type="Sprite" parent="Environment" index="82"]
+position = Vector2( -176, -528 )
+texture = ExtResource( 3 )
+
+[node name="towerDefense_tile038" type="Sprite" parent="Environment" index="83"]
+position = Vector2( -1152, 288 )
+texture = ExtResource( 2 )
+
+[node name="towerDefense_tile169" type="Sprite" parent="Environment" index="84"]
+position = Vector2( -64, -80 )
+texture = ExtResource( 8 )
+
+[node name="Towers" parent="." index="3"]
+bullets = NodePath("../../Level2/Bullets")
+gui = NodePath("../../Level2/GUI")
+
+[node name="TowerMissileLauncher" parent="Towers" index="0" instance=ExtResource( 15 )]
+material = SubResource( 2 )
+position = Vector2( -672, -240 )
+
+[node name="TowerMissileLauncher2" parent="Towers" index="1" instance=ExtResource( 15 )]
+material = SubResource( 2 )
+position = Vector2( -672, 272 )
+
+[node name="TowerMachineGun" parent="Towers" index="2" instance=ExtResource( 14 )]
+material = SubResource( 3 )
+position = Vector2( 640, -112 )
+settingsData = SubResource( 6 )
+damageResource = SubResource( 7 )
+
+[node name="TowerMachineGun2" parent="Towers" index="3" instance=ExtResource( 14 )]
+material = SubResource( 3 )
+position = Vector2( 784, 0 )
+settingsData = SubResource( 6 )
+damageResource = SubResource( 7 )
+
+[node name="TowerMachineGun3" parent="Towers" index="4" instance=ExtResource( 14 )]
+material = SubResource( 3 )
+position = Vector2( 640, 128 )
+settingsData = SubResource( 6 )
+damageResource = SubResource( 7 )
+
+[node name="TowerMachineGun4" parent="Towers" index="5" instance=ExtResource( 14 )]
+material = SubResource( 3 )
+position = Vector2( 448, -64 )
+settingsData = SubResource( 6 )
+damageResource = SubResource( 7 )
+
+[node name="TowerMachineGun5" parent="Towers" index="6" instance=ExtResource( 14 )]
+material = SubResource( 3 )
+position = Vector2( 256, -64 )
+settingsData = SubResource( 6 )
+damageResource = SubResource( 7 )
+
+[node name="TowerMachineGun6" parent="Towers" index="7" instance=ExtResource( 14 )]
+material = SubResource( 3 )
+position = Vector2( 48, -64 )
+settingsData = SubResource( 6 )
+damageResource = SubResource( 7 )
+
+[node name="TowerMachineGun7" parent="Towers" index="8" instance=ExtResource( 14 )]
+material = SubResource( 3 )
+position = Vector2( 48, 64 )
+settingsData = SubResource( 6 )
+damageResource = SubResource( 7 )
+
+[node name="TowerMachineGun8" parent="Towers" index="9" instance=ExtResource( 14 )]
+material = SubResource( 3 )
+position = Vector2( 256, 64 )
+settingsData = SubResource( 6 )
+damageResource = SubResource( 7 )
+
+[node name="TowerMachineGun9" parent="Towers" index="10" instance=ExtResource( 14 )]
+material = SubResource( 3 )
+position = Vector2( 448, 64 )
+settingsData = SubResource( 6 )
+damageResource = SubResource( 7 )
+
+[node name="GUInput" parent="." index="4"]
+margin_left = -4848.0
+margin_top = -4800.0
+margin_right = 5152.0
+margin_bottom = 5200.0
+towers = NodePath("../../Level2/Towers")
+
+[node name="Spawners" parent="." index="5"]
+pathNode = NodePath("../../Level2/Path2D")
+
+[node name="Path2D" parent="." index="6"]
+curve = SubResource( 1 )
