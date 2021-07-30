@@ -18,13 +18,15 @@ func _ready():
 	label.text = Tower.UPGRADE_TYPE.keys()[type]
 
 	var previous = null
-	
+	var i = 0
 	for entry in data:
 		var new_upgrade_button = UpgradeButtonScene.instance()
 		new_upgrade_button.init(entry[0], entry[1], type, tower)
 		container.add_child(new_upgrade_button)
-		if entry != data[0]:
+		# disable all buttons except for the first
+		if i != 0:
 			new_upgrade_button.disable()
+		i += 1
 		
 		if previous != null:
 			previous.next = new_upgrade_button

@@ -5,7 +5,7 @@ export(NodePath) onready var container = get_node(container)
 
 onready var panel = get_node("Panel")
 
-func init(upgradeData: UpgradeInfo):
+func init(upgradeData: Resource):
 	for i in range(upgradeData.type.size()):
 		var type = upgradeData.type[i]
 		var data = upgradeData.data[i]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Scenes/Level/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/PNG/Default size/towerDefense_tile134.png" type="Texture" id=3]
@@ -8,78 +8,14 @@
 [ext_resource path="res://assets/PNG/Default size/towerDefense_tile133.png" type="Texture" id=7]
 [ext_resource path="res://assets/PNG/Default size/towerDefense_tile132.png" type="Texture" id=8]
 [ext_resource path="res://assets/PNG/Default size/towerDefense_tile131.png" type="Texture" id=9]
-[ext_resource path="res://Scenes/Towers/MachineGun/TowerMachineGun.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/PNG/Retina/towerDefense_tile021.png" type="Texture" id=11]
 [ext_resource path="res://assets/PNG/Retina/towerDefense_tile020.png" type="Texture" id=12]
 [ext_resource path="res://assets/PNG/Retina/towerDefense_tile019.png" type="Texture" id=13]
-[ext_resource path="res://ResourceTemplates/TargetingModes.gd" type="Script" id=14]
 [ext_resource path="res://Scenes/Levels/Resources/level1/LevelData1.tres" type="Resource" id=15]
-[ext_resource path="res://ResourceTemplates/DamageType.gd" type="Script" id=16]
-[ext_resource path="res://ResourceTemplates/SettingsData.gd" type="Script" id=17]
-[ext_resource path="res://ResourceTemplates/UpgradeInfo.gd" type="Script" id=18]
-[ext_resource path="res://Scenes/Towers/MissileLauncher/TowerMissileLauncher.tscn" type="PackedScene" id=19]
-[ext_resource path="res://Scenes/Hitbox/Hitbox.tscn" type="PackedScene" id=20]
-[ext_resource path="res://Scenes/Towers/DamageInfo/null.tres" type="Resource" id=21]
-[ext_resource path="res://Scenes/Towers/MissileLauncher/MissileAmmo.gd" type="Script" id=22]
-[ext_resource path="res://assets/PNG/Retina/towerDefense_tile251.png" type="Texture" id=23]
-[ext_resource path="res://Scenes/Towers/MissileLauncher/MissileExplosion.tscn" type="PackedScene" id=24]
-[ext_resource path="res://Shaders/Outline.shader" type="Shader" id=25]
 
-[sub_resource type="ShaderMaterial" id=2]
-resource_local_to_scene = true
-shader = ExtResource( 25 )
-shader_param/line_color = Color( 1, 1, 1, 1 )
-shader_param/line_thickness = 4.0
-
-[sub_resource type="Resource" id=3]
-resource_local_to_scene = true
-script = ExtResource( 14 )
-modes = [ 0, 1, 2, 3, 4 ]
-
-[sub_resource type="Resource" id=4]
-resource_local_to_scene = true
-script = ExtResource( 18 )
-type = [ 0, 2, 1 ]
-data = [ [ [ 5.0, 100.0 ], [ 5.0, 200.0 ], [ 5.0, 300.0 ] ], [ [ 50.0, 100.0 ], [ 100.0, 300.0 ], [ 100.0, 600.0 ] ], [ [ -0.1, 100.0 ], [ -0.2, 200.0 ], [ -0.4, 600.0 ] ] ]
-
-[sub_resource type="Resource" id=5]
-resource_local_to_scene = true
-script = ExtResource( 17 )
-targetingModes = SubResource( 3 )
-upgradeInfo = SubResource( 4 )
-sellPrice = 100.0
-
-[sub_resource type="Resource" id=6]
-resource_local_to_scene = true
-script = ExtResource( 16 )
-damage = 0.0
-
-[sub_resource type="ShaderMaterial" id=7]
-resource_local_to_scene = true
-shader = ExtResource( 25 )
-shader_param/line_color = Color( 1, 1, 1, 1 )
-shader_param/line_thickness = 4.0
-
-[sub_resource type="CircleShape2D" id=8]
-radius = 50.0
-
-[sub_resource type="PackedScene" id=9]
-resource_local_to_scene = true
-_bundled = {
-"conn_count": 0,
-"conns": PoolIntArray(  ),
-"editable_instances": [ NodePath("Hitbox") ],
-"names": PoolStringArray( "MissileAmmo", "script", "killAfter", "speed", "homingSpeed", "homingAngle", "fadeDuration", "explosionScene", "Node2D", "Hitbox", "damageInfo", "CollisionShape2D", "shape", "Sprite", "rotation", "texture" ),
-"node_count": 4,
-"node_paths": [  ],
-"nodes": PoolIntArray( -1, -1, 8, 0, -1, 7, 1, 0, 2, 1, 3, 2, 4, 3, 5, 4, 6, 5, 7, 6, 0, 0, 0, 2147483647, 9, 7, 1, 10, 8, 0, 1, -1, 2147483647, 262155, -1, 1, 12, 9, 0, 0, 0, 13, 13, -1, 2, 14, 10, 15, 11, 0 ),
-"variants": [ ExtResource( 22 ), 3.0, 600.0, 20.0, -360.0, 0.25, ExtResource( 24 ), ExtResource( 20 ), ExtResource( 21 ), SubResource( 8 ), 1.5708, ExtResource( 23 ) ],
-"version": 2
-}
-
-[sub_resource type="Curve2D" id=11]
+[sub_resource type="Curve2D" id=8]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, -640, -512, 0, 0, 0, 0, -640, 272, 0, 0, 0, 0, -592, 320, 0, 0, 0, 0, -304, 320, 0, 0, 0, 0, -256, 272, 0, 0, 0, 0, -256, -272, 0, 0, 0, 0, -208, -320, 0, 0, 0, 0, 80, -320, 0, 0, 0, 0, 128, -272, 0, 0, 0, 0, 128, 144, 0, 0, 0, 0, 176, 192, 0, 0, 0, 0, 464, 192, 0, 0, 0, 0, 512, 144, 0, 0, 0, 0, 512, -208, 0, 0, 0, 0, 560, -256, 0, 0, 0, 0, 896, -256, 0, 0, 0, 0, -496, -272 )
+"points": PoolVector2Array( 0, 0, 0, 0, -640, -512, 0, 0, 0, 0, -640, 272, 0, 0, 0, 0, -592, 320, 0, 0, 0, 0, -304, 320, 0, 0, 0, 0, -256, 272, 0, 0, 0, 0, -256, -272, 0, 0, 0, 0, -208, -320, 0, 0, 0, 0, 80, -320, 0, 0, 0, 0, 128, -272, 0, 0, 0, 0, 128, 144, 0, 0, 0, 0, 176, 192, 0, 0, 0, 0, 464, 192, 0, 0, 0, 0, 512, 144, 0, 0, 0, 0, 512, -208, 0, 0, 0, 0, 560, -256, 0, 0, 0, 0, 896, -256 )
 }
 
 [node name="Level1" instance=ExtResource( 1 )]
@@ -227,27 +163,5 @@ texture = ExtResource( 13 )
 position = Vector2( 832, -384 )
 texture = ExtResource( 13 )
 
-[node name="TowerMachineGun" parent="Towers" index="0" instance=ExtResource( 10 )]
-material = SubResource( 2 )
-position = Vector2( -480, -272 )
-settingsData = SubResource( 5 )
-damageResource = SubResource( 6 )
-
-[node name="TowerMachineGun2" parent="Towers" index="1" instance=ExtResource( 10 )]
-material = SubResource( 2 )
-position = Vector2( -400, -144 )
-settingsData = SubResource( 5 )
-damageResource = SubResource( 6 )
-
-[node name="TowerMissileLauncher" parent="Towers" index="2" instance=ExtResource( 19 )]
-material = SubResource( 7 )
-position = Vector2( -464, 160 )
-ammoScene = SubResource( 9 )
-
-[node name="TowerMissileLauncher2" parent="Towers" index="3" instance=ExtResource( 19 )]
-material = SubResource( 7 )
-position = Vector2( -368, 48 )
-ammoScene = SubResource( 9 )
-
 [node name="Path2D" parent="." index="6"]
-curve = SubResource( 11 )
+curve = SubResource( 8 )

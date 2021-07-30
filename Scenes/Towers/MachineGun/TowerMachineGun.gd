@@ -1,7 +1,7 @@
 extends "res://Scenes/Towers/Tower.gd"
 
 onready var shootPoint = get_node("Gun/ShootPoint")
-
+	
 func shoot():
 	var new_bullet = ammoScene.instance()
 	new_bullet.direction = Vector2(cos(gun.rotation), sin(gun.rotation)).normalized()

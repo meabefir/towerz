@@ -1,9 +1,18 @@
 [gd_resource type="Resource" load_steps=2 format=2]
 
-[ext_resource path="res://ResourceTemplates/EnemiesInLevel.gd" type="Script" id=1]
+[sub_resource type="GDScript" id=1]
+script/source = "extends Resource
+
+class_name EnemiesInLevel
+
+export(Array, Enemy.ENEMY_TYPE) var enemyType
+export(Array, int) var nrOfEnemies
+export(Array, float) var startDelay
+export(Array, float) var delay
+"
 
 [resource]
-script = ExtResource( 1 )
+script = SubResource( 1 )
 enemyType = [ 0, 1, 2, 1, 2 ]
 nrOfEnemies = [ 5, 10, 3, 50, 100 ]
 startDelay = [ 0.0, 6.0, 10.0, 15.0, 25.0 ]

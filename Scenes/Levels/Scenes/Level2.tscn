@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://Scenes/Level/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/PNG/Default size/towerDefense_tile020.png" type="Texture" id=2]
@@ -8,56 +8,28 @@
 [ext_resource path="res://assets/PNG/Default size/towerDefense_tile132.png" type="Texture" id=6]
 [ext_resource path="res://assets/PNG/Default size/towerDefense_tile131.png" type="Texture" id=7]
 [ext_resource path="res://assets/PNG/Default size/towerDefense_tile136.png" type="Texture" id=8]
-[ext_resource path="res://ResourceTemplates/DamageType.gd" type="Script" id=9]
-[ext_resource path="res://Shaders/Outline.shader" type="Shader" id=10]
-[ext_resource path="res://ResourceTemplates/UpgradeInfo.gd" type="Script" id=11]
-[ext_resource path="res://ResourceTemplates/SettingsData.gd" type="Script" id=12]
-[ext_resource path="res://ResourceTemplates/TargetingModes.gd" type="Script" id=13]
-[ext_resource path="res://Scenes/Towers/MachineGun/TowerMachineGun.tscn" type="PackedScene" id=14]
-[ext_resource path="res://Scenes/Towers/MissileLauncher/TowerMissileLauncher.tscn" type="PackedScene" id=15]
 [ext_resource path="res://Scenes/Levels/Resources/level2/LevelData2.tres" type="Resource" id=16]
 
-[sub_resource type="ShaderMaterial" id=2]
-resource_local_to_scene = true
-shader = ExtResource( 10 )
-shader_param/line_color = Color( 1, 1, 1, 1 )
-shader_param/line_thickness = 4.0
+[sub_resource type="GDScript" id=1]
+script/source = "extends Node2D
 
-[sub_resource type="ShaderMaterial" id=3]
-resource_local_to_scene = true
-shader = ExtResource( 10 )
-shader_param/line_color = Color( 1, 1, 1, 1 )
-shader_param/line_thickness = 4.0
+export(Resource) var levelData
 
-[sub_resource type="Resource" id=4]
-resource_local_to_scene = true
-script = ExtResource( 13 )
-modes = [ 0, 1, 2, 3, 4 ]
+onready var gui = get_node(\"GUI\")
 
-[sub_resource type="Resource" id=5]
-resource_local_to_scene = true
-script = ExtResource( 11 )
-type = [ 0, 2, 1 ]
-data = [ [ [ 5.0, 100.0 ], [ 5.0, 200.0 ], [ 5.0, 300.0 ] ], [ [ 50.0, 100.0 ], [ 100.0, 300.0 ], [ 100.0, 600.0 ] ], [ [ -0.1, 100.0 ], [ -0.2, 200.0 ], [ -0.4, 600.0 ] ] ]
+func _ready():
+	gui.coinsManager.coins = levelData.coins
+	
+	Global.currentLevel = self
+"
 
-[sub_resource type="Resource" id=6]
-resource_local_to_scene = true
-script = ExtResource( 12 )
-targetingModes = SubResource( 4 )
-upgradeInfo = SubResource( 5 )
-sellPrice = 100.0
-
-[sub_resource type="Resource" id=7]
-resource_local_to_scene = true
-script = ExtResource( 9 )
-damage = 0.0
-
-[sub_resource type="Curve2D" id=1]
+[sub_resource type="Curve2D" id=11]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 944, 0, 0, 0, 0, 0, 896, -48, 0, 0, 0, 0, 880, -112, 0, 0, 0, 0, 736, -256, 0, 0, 0, 0, 560, -256, 0, 0, 0, 0, 512, -208, 0, 0, 0, 0, 496, -192, 0, 0, 0, 0, 256, -192, 0, 0, 0, 0, -96, -192, 0, 0, 0, 0, -160, -256, 0, 0, 0, 0, -352, -256, 0, 0, 0, 0, -384, -288, 0, 0, 0, 0, -384, -368, 0, 0, 0, 0, -432, -400, 0, 0, 0, 0, -528, -496, 0, 0, 0, 0, -544, -512, 0, 0, 0, 0, -800, -512, 0, 0, 0, 0, -960, -352, 0, 0, 0, 0, -960, -144, 0, 0, 0, 0, -896, -96, 0, 0, 0, 0, -896, 64, 0, 0, 0, 0, -896, 112, 0, 0, 0, 0, -960, 160, 0, 0, 0, 0, -960, 336, 0, 0, 0, 0, -800, 512, 0, 0, 0, 0, -528, 512, 0, 0, 0, 0, -384, 352, 0, 0, 0, 0, -384, 288, 0, 0, 0, 0, -336, 256, 0, 0, 0, 0, -144, 256, 0, 0, 0, 0, -96, 208, 0, 0, 0, 0, -80, 192, 0, 0, 0, 0, 192, 192, 0, 0, 0, 0, 416, 192, 0, 0, 0, 0, 480, 192, 0, 0, 0, 0, 544, 256, 0, 0, 0, 0, 736, 256, 0, 0, 0, 0, 752, 256, 0, 0, 0, 0, 896, 80, 0, 0, 0, 0, 944, 0, 0, 0, 0, 0, 1152, 0 )
 }
 
 [node name="Level2" instance=ExtResource( 1 )]
+script = SubResource( 1 )
 levelData = ExtResource( 16 )
 
 [node name="GrassAndDirt" parent="TileMaps" index="0"]
@@ -413,68 +385,6 @@ texture = ExtResource( 8 )
 bullets = NodePath("../../Level2/Bullets")
 gui = NodePath("../../Level2/GUI")
 
-[node name="TowerMissileLauncher" parent="Towers" index="0" instance=ExtResource( 15 )]
-material = SubResource( 2 )
-position = Vector2( -672, -240 )
-
-[node name="TowerMissileLauncher2" parent="Towers" index="1" instance=ExtResource( 15 )]
-material = SubResource( 2 )
-position = Vector2( -672, 272 )
-
-[node name="TowerMachineGun" parent="Towers" index="2" instance=ExtResource( 14 )]
-material = SubResource( 3 )
-position = Vector2( 640, -112 )
-settingsData = SubResource( 6 )
-damageResource = SubResource( 7 )
-
-[node name="TowerMachineGun2" parent="Towers" index="3" instance=ExtResource( 14 )]
-material = SubResource( 3 )
-position = Vector2( 784, 0 )
-settingsData = SubResource( 6 )
-damageResource = SubResource( 7 )
-
-[node name="TowerMachineGun3" parent="Towers" index="4" instance=ExtResource( 14 )]
-material = SubResource( 3 )
-position = Vector2( 640, 128 )
-settingsData = SubResource( 6 )
-damageResource = SubResource( 7 )
-
-[node name="TowerMachineGun4" parent="Towers" index="5" instance=ExtResource( 14 )]
-material = SubResource( 3 )
-position = Vector2( 448, -64 )
-settingsData = SubResource( 6 )
-damageResource = SubResource( 7 )
-
-[node name="TowerMachineGun5" parent="Towers" index="6" instance=ExtResource( 14 )]
-material = SubResource( 3 )
-position = Vector2( 256, -64 )
-settingsData = SubResource( 6 )
-damageResource = SubResource( 7 )
-
-[node name="TowerMachineGun6" parent="Towers" index="7" instance=ExtResource( 14 )]
-material = SubResource( 3 )
-position = Vector2( 48, -64 )
-settingsData = SubResource( 6 )
-damageResource = SubResource( 7 )
-
-[node name="TowerMachineGun7" parent="Towers" index="8" instance=ExtResource( 14 )]
-material = SubResource( 3 )
-position = Vector2( 48, 64 )
-settingsData = SubResource( 6 )
-damageResource = SubResource( 7 )
-
-[node name="TowerMachineGun8" parent="Towers" index="9" instance=ExtResource( 14 )]
-material = SubResource( 3 )
-position = Vector2( 256, 64 )
-settingsData = SubResource( 6 )
-damageResource = SubResource( 7 )
-
-[node name="TowerMachineGun9" parent="Towers" index="10" instance=ExtResource( 14 )]
-material = SubResource( 3 )
-position = Vector2( 448, 64 )
-settingsData = SubResource( 6 )
-damageResource = SubResource( 7 )
-
 [node name="GUInput" parent="." index="4"]
 margin_left = -4848.0
 margin_top = -4800.0
@@ -486,4 +396,4 @@ towers = NodePath("../../Level2/Towers")
 pathNode = NodePath("../../Level2/Path2D")
 
 [node name="Path2D" parent="." index="6"]
-curve = SubResource( 1 )
+curve = SubResource( 11 )

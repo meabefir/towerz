@@ -92,6 +92,8 @@ func setTargetingMode(value):
 	targetingMode = value
 
 func _ready():
+	settingsData = settingsData.duplicate(true)
+	
 	base.use_parent_material = false
 	gun.use_parent_material = false
 	
