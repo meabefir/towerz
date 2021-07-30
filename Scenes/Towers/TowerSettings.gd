@@ -25,11 +25,13 @@ func open():
 
 func close():
 	animationPlayer.play("close")
+	tower.deselect()
 
 func createConfirmationPopup(message, confirm_func, object, deny_func = null):
 	var new_popup = confirmationPopupScene.instance()
 	new_popup.init(message, confirm_func, object, deny_func)
 	add_child(new_popup)
+
 	
 func destroy():
 	queue_free()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://Scenes/Towers/GUI/CoinsManager.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Level/GUI/CoinsManager.gd" type="Script" id=1]
 [ext_resource path="res://assets/UI/PNG/red_sliderRight.png" type="Texture" id=2]
 [ext_resource path="res://assets/UI/Font/kenvector_future.ttf" type="DynamicFontData" id=3]
 [ext_resource path="res://assets/PNG/Retina/towerDefense_tile272.png" type="Texture" id=4]

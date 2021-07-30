@@ -81,7 +81,7 @@ _global_script_class_icons={
 [application]
 
 config/name="tower defense"
-run/main_scene="res://Scenes/Levels/Scenes/Level1.tscn"
+run/main_scene="res://Scenes/Levels/Scenes/Level2.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -135,6 +135,7 @@ pointing/emulate_touch_from_mouse=true
 [layer_names]
 
 2d_physics/layer_2="enemy_hurtbox"
+2d_physics/layer_3="no_tower"
 
 [rendering]
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://assets/PNG/Retina/towerDefense_tile249.png" type="Texture" id=1]
 [ext_resource path="res://assets/PNG/Retina/towerDefense_tile180.png" type="Texture" id=2]
@@ -178,13 +178,16 @@ tracks/2/keys = {
 "values": [ true ]
 }
 
+[sub_resource type="RectangleShape2D" id=7]
+extents = Vector2( 64, 64 )
+
 [node name="TowerMachineGun" type="Node2D"]
 material = SubResource( 1 )
 script = ExtResource( 3 )
 settingsData = ExtResource( 6 )
 ammoScene = ExtResource( 7 )
 damageResource = ExtResource( 8 )
-rotationSpeed = 180.0
+rotationSpeed = 360.0
 fireRate = 1.0
 shootingAngle = 0.95
 radius = 300.0
@@ -217,5 +220,12 @@ anims/dead = SubResource( 3 )
 anims/hide = SubResource( 4 )
 anims/select = SubResource( 5 )
 anims/show = SubResource( 6 )
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource( 7 )
 
 [editable path="SearchArea"]

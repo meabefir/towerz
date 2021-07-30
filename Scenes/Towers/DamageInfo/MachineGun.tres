@@ -11,4 +11,4 @@ export var damage: float
 [resource]
 resource_local_to_scene = true
 script = SubResource( 1 )
-damage = 0.0
+damage = 3.0

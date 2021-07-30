@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://Scenes/Level/Level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/PNG/Default size/towerDefense_tile020.png" type="Texture" id=2]
@@ -10,26 +10,12 @@
 [ext_resource path="res://assets/PNG/Default size/towerDefense_tile136.png" type="Texture" id=8]
 [ext_resource path="res://Scenes/Levels/Resources/level2/LevelData2.tres" type="Resource" id=16]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Node2D
-
-export(Resource) var levelData
-
-onready var gui = get_node(\"GUI\")
-
-func _ready():
-	gui.coinsManager.coins = levelData.coins
-	
-	Global.currentLevel = self
-"
-
-[sub_resource type="Curve2D" id=11]
+[sub_resource type="Curve2D" id=1]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1152, 0, 0, 0, 0, 0, 944, 0, 0, 0, 0, 0, 896, -48, 0, 0, 0, 0, 880, -112, 0, 0, 0, 0, 736, -256, 0, 0, 0, 0, 560, -256, 0, 0, 0, 0, 512, -208, 0, 0, 0, 0, 496, -192, 0, 0, 0, 0, 256, -192, 0, 0, 0, 0, -96, -192, 0, 0, 0, 0, -160, -256, 0, 0, 0, 0, -352, -256, 0, 0, 0, 0, -384, -288, 0, 0, 0, 0, -384, -368, 0, 0, 0, 0, -432, -400, 0, 0, 0, 0, -528, -496, 0, 0, 0, 0, -544, -512, 0, 0, 0, 0, -800, -512, 0, 0, 0, 0, -960, -352, 0, 0, 0, 0, -960, -144, 0, 0, 0, 0, -896, -96, 0, 0, 0, 0, -896, 64, 0, 0, 0, 0, -896, 112, 0, 0, 0, 0, -960, 160, 0, 0, 0, 0, -960, 336, 0, 0, 0, 0, -800, 512, 0, 0, 0, 0, -528, 512, 0, 0, 0, 0, -384, 352, 0, 0, 0, 0, -384, 288, 0, 0, 0, 0, -336, 256, 0, 0, 0, 0, -144, 256, 0, 0, 0, 0, -96, 208, 0, 0, 0, 0, -80, 192, 0, 0, 0, 0, 192, 192, 0, 0, 0, 0, 416, 192, 0, 0, 0, 0, 480, 192, 0, 0, 0, 0, 544, 256, 0, 0, 0, 0, 736, 256, 0, 0, 0, 0, 752, 256, 0, 0, 0, 0, 896, 80, 0, 0, 0, 0, 944, 0, 0, 0, 0, 0, 1152, 0 )
 }
 
 [node name="Level2" instance=ExtResource( 1 )]
-script = SubResource( 1 )
 levelData = ExtResource( 16 )
 
 [node name="GrassAndDirt" parent="TileMaps" index="0"]
@@ -385,15 +371,15 @@ texture = ExtResource( 8 )
 bullets = NodePath("../../Level2/Bullets")
 gui = NodePath("../../Level2/GUI")
 
-[node name="GUInput" parent="." index="4"]
+[node name="GUInput" parent="." index="5"]
 margin_left = -4848.0
 margin_top = -4800.0
 margin_right = 5152.0
 margin_bottom = 5200.0
 towers = NodePath("../../Level2/Towers")
 
-[node name="Spawners" parent="." index="5"]
+[node name="Spawners" parent="." index="6"]
 pathNode = NodePath("../../Level2/Path2D")
 
-[node name="Path2D" parent="." index="6"]
-curve = SubResource( 11 )
+[node name="Path2D" parent="." index="7"]
+curve = SubResource( 1 )

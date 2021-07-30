@@ -15,7 +15,7 @@ func destroy():
 
 func _draw():
 	draw_circle(Vector2(), visualRadius, color)
-	draw_circle(Vector2(), max(0, visualRadius - 10), color.linear_interpolate(Color(1,1,1,color.a), .5))
+	#draw_circle(Vector2(), max(0, visualRadius - 10), color.linear_interpolate(Color(1,1,1,color.a), .5))
 
 func _process(delta):
 	if !tower.selected:

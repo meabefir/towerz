@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Scenes/Level/GUI/TowerCreation/TowerPreview.gd" type="Script" id=1]
+[ext_resource path="res://assets/tower previews/machine_gun.png" type="Texture" id=2]
+
+[node name="TowerPreview" type="Control"]
+margin_right = 64.0
+margin_bottom = 64.0
+rect_pivot_offset = Vector2( 32, 32 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+texture = NodePath("TextureButton")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_right = 128.0
+margin_bottom = 128.0
+rect_scale = Vector2( 0.5, 0.5 )
+action_mode = 0
+texture_normal = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Tween" type="Tween" parent="."]
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="tween_completed" from="Tween" to="." method="_on_Tween_tween_completed"]

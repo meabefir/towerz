@@ -1,10 +1,10 @@
 [gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://Scenes/Towers/TowerSettings.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Towers/GUI/TowerMode.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Scenes/Towers/GUI/Upgrade/Upgrades.tscn" type="PackedScene" id=3]
-[ext_resource path="res://Scenes/Towers/GUI/SellButton.tscn" type="PackedScene" id=4]
-[ext_resource path="res://Scenes/Towers/GUI/ConfirmationPopup.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Scenes/Level/GUI/TowerSettings/TowerMode.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Level/GUI/TowerSettings/Upgrade/Upgrades.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Level/GUI/TowerSettings/SellButton.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Scenes/Level/GUI/ConfirmationPopup.tscn" type="PackedScene" id=5]
 
 [sub_resource type="Animation" id=1]
 resource_name = "close"

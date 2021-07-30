@@ -5,4 +5,4 @@
 [node name="RadiusNode" type="Node2D"]
 z_index = 10
 script = ExtResource( 1 )
-color = Color( 1, 0, 0.960784, 0.207843 )
+color = Color( 0.992157, 0, 1, 0.196078 )
