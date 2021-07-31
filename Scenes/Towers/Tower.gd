@@ -30,9 +30,12 @@ enum STATE {
 signal selected
 signal deselected
 
-export(Resource) var settingsData
-export(PackedScene) var ammoScene
-export(Resource) var damageResource
+#export(Resource) onready var settingsData 
+var settingsData
+export(String) var settingsDataPath
+export(String) var upgradeInfoPath
+export(PackedScene) onready var ammoScene
+export(Resource) onready var damageResource
 export(TARGETING_MODES) var targetingMode setget setTargetingMode
 export var rotationSpeed: float
 export var fireRate: float setget setFireRate
@@ -92,8 +95,10 @@ func setTargetingMode(value):
 	targetingMode = value
 
 func _ready():
-	settingsData = settingsData.duplicate(true)
-	
+	#settingsData = settingsData.duplicate(true)
+	settingsData = load(settingsDataPath).duplicate()
+	settingsData.upgradeInfo = load(upgradeInfoPath).duplicate()
+		
 	base.use_parent_material = false
 	gun.use_parent_material = false
 	

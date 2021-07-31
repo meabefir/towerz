@@ -4,7 +4,7 @@ onready var label = get_node("Label")
 
 var coins = 0 setget setCoins
 var visibleValue = 0
-var lerpSpeed = .02
+var lerpSpeed = .06
 
 func setCoins(value):
 	coins = value

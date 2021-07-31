@@ -1,11 +1,10 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Scenes/Towers/MissileLauncher/TowerMissileLauncher.gd" type="Script" id=1]
 [ext_resource path="res://assets/PNG/Retina/towerDefense_tile182.png" type="Texture" id=2]
 [ext_resource path="res://assets/PNG/Retina/towerDefense_tile228.png" type="Texture" id=3]
 [ext_resource path="res://Scenes/Towers/SearchArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Shaders/Outline.shader" type="Shader" id=5]
-[ext_resource path="res://Scenes/Towers/MissileLauncher/SettingsDataMissileLauncher.tres" type="Resource" id=6]
 [ext_resource path="res://Scenes/Towers/MissileLauncher/MissilePlaceholder.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Towers/MissileLauncher/MissileAmmo.tscn" type="PackedScene" id=8]
 [ext_resource path="res://Scenes/Towers/DamageInfo/MissileExplosion.tres" type="Resource" id=9]
@@ -185,7 +184,8 @@ extents = Vector2( 64, 64 )
 [node name="TowerMissileLauncher" type="Node2D"]
 material = SubResource( 1 )
 script = ExtResource( 1 )
-settingsData = ExtResource( 6 )
+settingsDataPath = "res://Scenes/Towers/MissileLauncher/SettingsDataMissileLauncher.tres"
+upgradeInfoPath = "res://Scenes/Towers/MissileLauncher/UpgradeInfoMissileLauncher.tres"
 ammoScene = ExtResource( 8 )
 damageResource = ExtResource( 9 )
 rotationSpeed = 90.0

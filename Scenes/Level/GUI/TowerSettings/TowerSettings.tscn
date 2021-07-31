@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://Scenes/Towers/TowerSettings.gd" type="Script" id=1]
+[ext_resource path="res://Scenes/Level/GUI/TowerSettings/TowerSettings.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Level/GUI/TowerSettings/TowerMode.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Scenes/Level/GUI/TowerSettings/Upgrade/Upgrades.tscn" type="PackedScene" id=3]
 [ext_resource path="res://Scenes/Level/GUI/TowerSettings/SellButton.tscn" type="PackedScene" id=4]

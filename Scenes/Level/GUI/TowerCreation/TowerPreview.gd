@@ -8,13 +8,8 @@ var offset
 
 export var closeDuration = .2
 
-const towerPreviewTextures = {
-	Tower.TOWER_TYPE.MACHINE_GUN: preload("res://assets/tower previews/machine_gun.png"),
-	Tower.TOWER_TYPE.MISSILE_LAUNCHER: preload("res://assets/tower previews/missile_launcher.png"),
-}
-
 func _ready():
-	texture.texture_normal = towerPreviewTextures[type]
+	texture.texture_normal = load(TowerPreviewTextures.data[type])
 
 func close():
 	tween.interpolate_property(self, "rect_position", rect_position, Vector2(), closeDuration, Tween.TRANS_LINEAR, Tween.EASE_OUT)

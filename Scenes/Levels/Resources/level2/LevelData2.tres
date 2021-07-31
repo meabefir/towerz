@@ -1,20 +1,11 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
+[ext_resource path="res://ResourceTemplates/LevelData.gd" type="Script" id=1]
 [ext_resource path="res://Scenes/Levels/Resources/level2/EnemiesInLvl2.tres" type="Resource" id=2]
 [ext_resource path="res://Scenes/Levels/Resources/level2/TowersUnlockedInLevel2.tres" type="Resource" id=3]
 
-[sub_resource type="GDScript" id=1]
-script/source = "extends Resource
-
-class_name LevelData
-
-export var coins: float
-export(Resource) var towersUnlocked
-export(Resource) var enemiesInLevel
-"
-
 [resource]
-script = SubResource( 1 )
+script = ExtResource( 1 )
 coins = 999999.0
 towersUnlocked = ExtResource( 3 )
 enemiesInLevel = ExtResource( 2 )
