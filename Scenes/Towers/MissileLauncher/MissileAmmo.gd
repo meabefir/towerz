@@ -1,4 +1,4 @@
-extends "res://Scenes/Towers/Ammo.gd"
+extends "res://Scenes/Towers/Ammo/Ammo.gd"
 
 export(PackedScene) var explosionScene
 var explosionDamageResource = null

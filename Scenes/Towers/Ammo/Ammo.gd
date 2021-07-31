@@ -17,7 +17,6 @@ func _ready():
 	
 	rotation = atan2(direction.y, direction.x)
 	
-	
 func _process(delta):
 	global_position += direction * speed * delta
 	
