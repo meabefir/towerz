@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=2 format=2]
+
+[ext_resource path="res://ResourceTemplates/EnemyWave.gd" type="Script" id=1]
+
+[resource]
+script = ExtResource( 1 )
+enemyType = [ 0, 1, 2 ]
+nrOfEnemies = [ 10, 5, 5 ]
+startDelay = [ 0.0, 5.0, 10.0 ]
+delay = [ 0.5, 0.5, 0.5 ]

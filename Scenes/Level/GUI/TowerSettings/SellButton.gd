@@ -4,8 +4,8 @@ onready var button: TextureButton = get_node("TextureButton")
 
 var sellValue = -1
 
-func _ready():
-	Events.connect("increase_cost", self, "increaseCost")
+#func _ready():
+#	Events.connect("increase_cost", self, "increaseCost")
 
 func increaseCost(value):
 	sellValue += value

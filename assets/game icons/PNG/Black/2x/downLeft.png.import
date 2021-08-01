@@ -1,0 +1,34 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/downLeft.png-ade2773db1a4129f91b45581c9792ef3.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://assets/game icons/PNG/Black/2x/downLeft.png"
+dest_files=[ "res://.import/downLeft.png-ade2773db1a4129f91b45581c9792ef3.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=true
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+stream=false
+size_limit=0
+detect_3d=true
+svg/scale=1.0

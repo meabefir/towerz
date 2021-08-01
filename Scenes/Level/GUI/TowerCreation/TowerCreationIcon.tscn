@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/UI/tower_build_icon.png" type="Texture" id=1]
 [ext_resource path="res://Scenes/Level/GUI/TowerCreation/TowerCreationIcon.gd" type="Script" id=2]
 [ext_resource path="res://Scenes/Level/GUI/TowerCreation/TowerPreview.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Custom/TimeScaleAnimation.gd" type="Script" id=4]
 
-[sub_resource type="Animation" id=2]
+[sub_resource type="Animation" id=1]
 resource_name = "close"
 length = 0.3
 tracks/0/type = "value"
@@ -36,7 +37,7 @@ tracks/2/path = NodePath("TextureButton:rect_rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/imported = false
-tracks/2/enabled = true
+tracks/2/enabled = false
 tracks/2/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -94,8 +95,7 @@ tracks/6/keys = {
 } ]
 }
 
-[sub_resource type="Animation" id=1]
-resource_name = "open"
+[sub_resource type="Animation" id=2]
 length = 0.3
 tracks/0/type = "value"
 tracks/0/path = NodePath("TextureButton:disabled")
@@ -138,7 +138,7 @@ tracks/3/path = NodePath("TextureButton:rect_rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/imported = false
-tracks/3/enabled = true
+tracks/3/enabled = false
 tracks/3/keys = {
 "times": PoolRealArray( 0, 0.3 ),
 "transitions": PoolRealArray( 1, 1 ),
@@ -184,11 +184,75 @@ tracks/6/keys = {
 "values": [ 0 ]
 }
 
+[sub_resource type="Animation" id=3]
+resource_name = "reset"
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureButton:rect_position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 16, 528 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("TextureButton:rect_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 51.9998, 52.0004 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("TextureButton:rect_pivot_offset")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 26, 26 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("TextureButton:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+tracks/4/type = "value"
+tracks/4/path = NodePath("TextureButton:rect_rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0.0 ]
+}
+
 [node name="TowerCreationIcon" type="Control" groups=[
 "towerCreationIcon",
 ]]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -196,7 +260,6 @@ __meta__ = {
 TowerPreviewScene = ExtResource( 3 )
 button = NodePath("TextureButton")
 animationPlayer = NodePath("AnimationPlayer")
-opened = true
 dist_from_center = 75.0
 
 [node name="TextureButton" type="TextureButton" parent="."]
@@ -213,11 +276,15 @@ grow_vertical = 2
 rect_pivot_offset = Vector2( 26, 26 )
 disabled = true
 texture_normal = ExtResource( 1 )
+expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/close = SubResource( 2 )
-anims/open = SubResource( 1 )
+autoplay = "reset"
+anims/close = SubResource( 1 )
+anims/open = SubResource( 2 )
+anims/reset = SubResource( 3 )
+script = ExtResource( 4 )
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

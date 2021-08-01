@@ -27,7 +27,7 @@ func _process(delta):
 		radius = 0
 
 	if visualRadius != radius:
-		visualRadius = lerp(visualRadius, radius, lerpSpeed * delta)
+		visualRadius = lerp(visualRadius, radius, lerpSpeed * delta / Global.timeScale)
 		
 		if abs(radius - visualRadius) < .1:
 			visualRadius = radius

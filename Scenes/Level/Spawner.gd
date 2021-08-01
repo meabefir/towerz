@@ -35,6 +35,7 @@ func timeout():
 	pathNode.add_child(new_enemy)
 	
 	enemiesSpawned += 1
+	
 	if enemiesSpawned == enemyCount:
 		self.queue_free()
 	

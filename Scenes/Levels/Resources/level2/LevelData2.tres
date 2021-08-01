@@ -1,7 +1,7 @@
 [gd_resource type="Resource" load_steps=4 format=2]
 
 [ext_resource path="res://ResourceTemplates/LevelData.gd" type="Script" id=1]
-[ext_resource path="res://Scenes/Levels/Resources/level2/EnemiesInLvl2.tres" type="Resource" id=2]
+[ext_resource path="res://Scenes/Levels/Resources/level2/EnemiesInLevel2.tres" type="Resource" id=2]
 [ext_resource path="res://Scenes/Levels/Resources/level2/TowersUnlockedInLevel2.tres" type="Resource" id=3]
 
 [resource]

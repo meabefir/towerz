@@ -17,6 +17,15 @@ func _ready():
 	
 	rotation = atan2(direction.y, direction.x)
 	
+	var killTimer = Timer.new()
+	killTimer.connect("timeout", self, "killTimeout")
+	killTimer.wait_time = killAfter
+	add_child(killTimer)
+	killTimer.start()
+	
+func killTimeout():
+	pass
+	
 func _process(delta):
 	global_position += direction * speed * delta
 	

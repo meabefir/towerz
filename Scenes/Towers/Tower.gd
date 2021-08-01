@@ -38,6 +38,7 @@ export(String) var upgradeInfoPath
 export(PackedScene) onready var ammoScene
 export(Resource) onready var damageResource
 export(TARGETING_MODES) var targetingMode setget setTargetingMode
+export(Resource) var cantTarget = load("res://Scenes/Towers/CanTargetAll.tres")
 export var rotationSpeed: float
 export var fireRate: float setget setFireRate
 export var shootingAngle: float
@@ -70,7 +71,7 @@ func setFireRate(value):
 	
 	if not shootTimer:
 		return
-	shootTimer.wait_time = value
+	shootTimer.wait_time = fireRate
 
 func setRadius(value):
 	radius = value

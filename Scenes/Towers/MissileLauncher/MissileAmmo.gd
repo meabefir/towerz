@@ -3,14 +3,10 @@ extends "res://Scenes/Towers/Ammo/Ammo.gd"
 export(PackedScene) var explosionScene
 var explosionDamageResource = null
 
-func _ready():
-	var killTimer = Timer.new()
-	killTimer.connect("timeout", self, "explode")
-	killTimer.wait_time = killAfter
-	add_child(killTimer)
-	killTimer.start()
-
 func hurtEnemy(enemy):
+	explode()
+	
+func killTimeout():
 	explode()
 	
 func explode():

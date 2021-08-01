@@ -11,7 +11,8 @@ func _ready():
 func hurt(from):
 	emit_signal("hurt", from)
 
-func getOffset():
-	if get_parent() is Enemy:
-		return get_parent().offset
-	return -1
+func disable():
+	get_node("CollisionShape2D").disabled = true
+
+func enable():
+	get_node("CollisionShape2D").disabled = false
