@@ -94,6 +94,18 @@ tracks/6/keys = {
 "method": "closePreviews"
 } ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:transitioning")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=2]
 length = 0.3
@@ -183,6 +195,18 @@ tracks/6/keys = {
 "update": 1,
 "values": [ 0 ]
 }
+tracks/7/type = "value"
+tracks/7/path = NodePath(".:transitioning")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/keys = {
+"times": PoolRealArray( 0, 0.3 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 1,
+"values": [ true, false ]
+}
 
 [sub_resource type="Animation" id=3]
 resource_name = "reset"
@@ -252,7 +276,6 @@ tracks/4/keys = {
 ]]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 2
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -260,6 +283,7 @@ __meta__ = {
 TowerPreviewScene = ExtResource( 3 )
 button = NodePath("TextureButton")
 animationPlayer = NodePath("AnimationPlayer")
+opened = true
 dist_from_center = 75.0
 
 [node name="TextureButton" type="TextureButton" parent="."]
@@ -267,14 +291,14 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-margin_left = -496.0
-margin_top = 228.0
-margin_right = -444.0
-margin_bottom = 280.0
+margin_left = -32.0
+margin_top = -28.0
+margin_right = 20.0
+margin_bottom = 24.0
 grow_horizontal = 2
 grow_vertical = 2
+rect_scale = Vector2( 2, 2 )
 rect_pivot_offset = Vector2( 26, 26 )
-disabled = true
 texture_normal = ExtResource( 1 )
 expand = true
 __meta__ = {

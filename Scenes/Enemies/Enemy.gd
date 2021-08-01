@@ -2,7 +2,11 @@ extends PathFollow2D
 
 class_name Enemy
 
-enum ENEMY_TYPE {SOLDIER_E, SOLDIER_M, SOLDIER_H}
+enum ENEMY_TYPE {
+	SOLDIER_E,
+	SOLDIER_M, 
+	SOLDIER_H
+}
 
 export(Resource) onready var enemyData
 export(ENEMY_TYPE) var type
@@ -38,8 +42,8 @@ func hurt(from):
 
 func die():
 	# give coins
-	var coins_manager = get_tree().get_nodes_in_group("coinsManager")
-	coins_manager.coins += EnemyCoinsDrop[type]
+	var coins_manager = get_tree().get_nodes_in_group("coinsManager")[0]
+	coins_manager.coins += EnemyCoinsDrop.data[type]
 	
 	get_node("Hurtbox").disable()
 	emit_signal("die", self)

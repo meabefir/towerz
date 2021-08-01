@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://Scenes/Screens/LevelSelection/LevelPreview.gd" type="Script" id=2]
+
+[node name="CenterContainer" type="CenterContainer"]
+margin_right = 384.0
+margin_bottom = 190.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+button = NodePath("TextureButton")
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 64.0
+margin_top = 20.0
+margin_right = 320.0
+margin_bottom = 170.0
+rect_min_size = Vector2( 256, 150 )
+expand = true
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

@@ -187,8 +187,8 @@ extents = Vector2( 64, 64 )
 [node name="TowerHeavyMachineGun" type="Node2D"]
 material = SubResource( 1 )
 script = ExtResource( 5 )
-settingsDataPath = "res://Scenes/Towers/HeavyMachineGun/SettingsDataHeavyMahineGun.tres"
-upgradeInfoPath = "res://Scenes/Towers/HeavyMachineGun/UpgradeInfoHeavyMachineGun.tres"
+settingsDataPath = "res://Scenes/Towers/HeavyMachineGun/Resources/SettingsDataHeavyMahineGun.tres"
+upgradeInfoPath = "res://Scenes/Towers/HeavyMachineGun/Resources/UpgradeInfoHeavyMachineGun.tres"
 ammoScene = ExtResource( 6 )
 damageResource = ExtResource( 7 )
 rotationSpeed = 720.0

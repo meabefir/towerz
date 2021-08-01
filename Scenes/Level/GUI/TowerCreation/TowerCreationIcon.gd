@@ -7,6 +7,7 @@ export(NodePath) onready var animationPlayer = get_node(animationPlayer)
 
 export var opened = false
 export var dist_from_center: float = 50
+export var transitioning = false
 
 #func _draw():
 #	draw_circle(button.rect_position + button.rect_pivot_offset, 140, Color.red)
@@ -24,7 +25,8 @@ func _ready():
 
 func _gui_input(event):
 	if Input.is_action_just_pressed("click"):
-		close()
+		if !transitioning:
+			close()
 
 func _on_TextureButton_pressed():
 	if !opened:

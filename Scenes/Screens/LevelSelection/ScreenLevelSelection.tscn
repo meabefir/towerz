@@ -1,0 +1,86 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Scenes/Screens/LevelSelection/ScreenLevelSelection.gd" type="Script" id=1]
+[ext_resource path="res://assets/UI/PNG/red_panel.png" type="Texture" id=2]
+[ext_resource path="res://Fonts/white_big_size.tres" type="DynamicFont" id=3]
+[ext_resource path="res://Scenes/Screens/LevelSelection/LevelPreview.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/UI/PNG/red_sliderRight.png" type="Texture" id=5]
+[ext_resource path="res://assets/UI/PNG/red_sliderLeft.png" type="Texture" id=6]
+[ext_resource path="res://assets/UI/PNG/red_sliderUp.png" type="Texture" id=7]
+
+[node name="ScreenLevelSelection" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+container = NodePath("GridContainer")
+leftButton = NodePath("PageButtons/Left")
+rightButton = NodePath("PageButtons/Right")
+LevelPreviewScene = ExtResource( 4 )
+
+[node name="TextureRect" type="NinePatchRect" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -240.0
+margin_top = 32.0
+margin_right = 240.0
+margin_bottom = 112.0
+texture = ExtResource( 2 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureRect"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 3 )
+text = "SELECT LEVEL"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GridContainer" type="GridContainer" parent="."]
+margin_left = 128.0
+margin_top = 128.0
+margin_right = 896.0
+margin_bottom = 512.0
+columns = 2
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PageButtons" type="Control" parent="."]
+margin_left = 336.0
+margin_top = 512.0
+margin_right = 688.0
+margin_bottom = 576.0
+
+[node name="Left" type="TextureButton" parent="PageButtons"]
+anchor_top = 0.5
+anchor_bottom = 0.5
+margin_top = -20.0
+margin_right = 40.0
+margin_bottom = 20.0
+texture_normal = ExtResource( 6 )
+texture_disabled = ExtResource( 7 )
+
+[node name="Right" type="TextureButton" parent="PageButtons"]
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = -40.0
+margin_top = -20.0
+margin_bottom = 20.0
+texture_normal = ExtResource( 5 )
+texture_disabled = ExtResource( 7 )
+[connection signal="pressed" from="PageButtons/Left" to="." method="_on_Left_pressed"]
+[connection signal="pressed" from="PageButtons/Right" to="." method="_on_Right_pressed"]

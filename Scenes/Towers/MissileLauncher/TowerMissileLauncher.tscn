@@ -188,8 +188,8 @@ extents = Vector2( 64, 64 )
 ]]
 material = SubResource( 1 )
 script = ExtResource( 1 )
-settingsDataPath = "res://Scenes/Towers/MissileLauncher/SettingsDataMissileLauncher.tres"
-upgradeInfoPath = "res://Scenes/Towers/MissileLauncher/UpgradeInfoMissileLauncher.tres"
+settingsDataPath = "res://Scenes/Towers/MissileLauncher/Resources/SettingsDataMissileLauncher.tres"
+upgradeInfoPath = "res://Scenes/Towers/MissileLauncher/Resources/UpgradeInfoMissileLauncher.tres"
 ammoScene = ExtResource( 8 )
 damageResource = ExtResource( 9 )
 rotationSpeed = 90.0

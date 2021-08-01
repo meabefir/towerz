@@ -191,8 +191,8 @@ extents = Vector2( 64, 64 )
 ]]
 material = SubResource( 1 )
 script = ExtResource( 3 )
-settingsDataPath = "res://Scenes/Towers/MachineGun/SettingsDataMahineGun.tres"
-upgradeInfoPath = "res://Scenes/Towers/MachineGun/UpgradeInfoMachineGun.tres"
+settingsDataPath = "res://Scenes/Towers/MachineGun/Resources/SettingsDataMahineGun.tres"
+upgradeInfoPath = "res://Scenes/Towers/MachineGun/Resources/UpgradeInfoMachineGun.tres"
 ammoScene = ExtResource( 7 )
 damageResource = ExtResource( 8 )
 cantTarget = ExtResource( 11 )

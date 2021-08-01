@@ -44,6 +44,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ResourceTemplates/LevelData.gd"
 }, {
+"base": "Node",
+"class": "Levels",
+"language": "GDScript",
+"path": "res://ResourceTemplates/Levels.gd"
+}, {
 "base": "Resource",
 "class": "SettingsData",
 "language": "GDScript",
@@ -92,6 +97,7 @@ _global_script_class_icons={
 "EnemyStats": "",
 "EnemyWave": "",
 "LevelData": "",
+"Levels": "",
 "SettingsData": "",
 "TargetingModes": "",
 "Tower": "",
@@ -105,7 +111,7 @@ _global_script_class_icons={
 [application]
 
 config/name="tower defense"
-run/main_scene="res://Scenes/Levels/Scenes/Level2.tscn"
+run/main_scene="res://Scenes/Screens/LevelSelection/ScreenLevelSelection.tscn"
 config/icon="res://icon.png"
 
 [autoload]
