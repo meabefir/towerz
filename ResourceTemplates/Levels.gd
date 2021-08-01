@@ -31,5 +31,16 @@ const data = {
 		"preview": "res://assets/level previews/level1.png",
 		"scenePath": "res://Scenes/Levels/Scenes/Level1.tscn"
 	},
-	
+	8: {
+		"preview": "res://assets/level previews/level1.png",
+		"scenePath": "res://Scenes/Levels/Scenes/Level1.tscn"
+	},
+	9: {
+		"preview": "res://assets/level previews/level1.png",
+		"scenePath": "res://Scenes/Levels/Scenes/Level1.tscn"
+	},
+	10: {
+		"preview": "res://assets/level previews/level1.png",
+		"scenePath": "res://Scenes/Levels/Scenes/Level1.tscn"
+	},
 }
