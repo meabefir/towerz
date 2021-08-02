@@ -11,7 +11,7 @@
 
 [sub_resource type="ImageTexture" id=2]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=3]
 resource_name = "left"
 length = 0.2
 tracks/0/type = "value"
@@ -27,7 +27,7 @@ tracks/0/keys = {
 "values": [ Vector2( 0, 12 ), Vector2( -15, 12 ), Vector2( 0, 12 ) ]
 }
 
-[sub_resource type="Animation" id=10]
+[sub_resource type="Animation" id=4]
 resource_name = "right"
 length = 0.2
 tracks/0/type = "value"
@@ -43,9 +43,9 @@ tracks/0/keys = {
 "values": [ Vector2( 288, 12 ), Vector2( 303, 12 ), Vector2( 288, 12 ) ]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id=5]
 resource_name = "slide_from_left"
-length = 0.1
+length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("GridContainer:rect_position")
 tracks/0/interp = 1
@@ -53,15 +53,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( -772, 128 ), Vector2( 128, 128 ) ]
 }
 
-[sub_resource type="Animation" id=8]
+[sub_resource type="Animation" id=6]
 resource_name = "slide_from_right"
-length = 0.1
+length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("GridContainer:rect_position")
 tracks/0/interp = 1
@@ -69,15 +69,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 1028, 128 ), Vector2( 128, 128 ) ]
 }
 
-[sub_resource type="Animation" id=5]
-resource_name = "slide_left"
-length = 0.1
+[sub_resource type="Animation" id=7]
+length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("GridContainer:rect_position")
 tracks/0/interp = 1
@@ -85,15 +84,14 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 128, 128 ), Vector2( -772, 128 ) ]
 }
 
-[sub_resource type="Animation" id=6]
-resource_name = "slide_right"
-length = 0.1
+[sub_resource type="Animation" id=8]
+length = 0.2
 tracks/0/type = "value"
 tracks/0/path = NodePath("GridContainer:rect_position")
 tracks/0/interp = 1
@@ -101,7 +99,7 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
+"times": PoolRealArray( 0, 0.2 ),
 "transitions": PoolRealArray( 1, 1 ),
 "update": 0,
 "values": [ Vector2( 128, 128 ), Vector2( 1028, 128 ) ]
@@ -150,9 +148,9 @@ __meta__ = {
 }
 
 [node name="GridContainer" type="GridContainer" parent="."]
-margin_left = -772.0
+margin_left = 128.0
 margin_top = 128.0
-margin_right = -4.00006
+margin_right = 896.0
 margin_bottom = 512.0
 columns = 2
 __meta__ = {
@@ -212,13 +210,13 @@ __meta__ = {
 }
 
 [node name="ArrowAnimator" type="AnimationPlayer" parent="PageButtons"]
-anims/left = SubResource( 9 )
-anims/right = SubResource( 10 )
+anims/left = SubResource( 3 )
+anims/right = SubResource( 4 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/slide_from_left = SubResource( 7 )
-anims/slide_from_right = SubResource( 8 )
-anims/slide_left = SubResource( 5 )
-anims/slide_right = SubResource( 6 )
+anims/slide_from_left = SubResource( 5 )
+anims/slide_from_right = SubResource( 6 )
+anims/slide_left = SubResource( 7 )
+anims/slide_right = SubResource( 8 )
 [connection signal="pressed" from="PageButtons/Left" to="." method="_on_Left_pressed"]
 [connection signal="pressed" from="PageButtons/Right" to="." method="_on_Right_pressed"]

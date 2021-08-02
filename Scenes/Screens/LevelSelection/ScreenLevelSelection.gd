@@ -74,9 +74,13 @@ func loadPage(page):
 		rightButton.disabled = false
 		
 func _on_Left_pressed():
+	if currentPage == 1:
+		return
 	arrowAnimation.play("left")
 	loadPage(currentPage - 1)
 
 func _on_Right_pressed():
+	if currentPage == nrPages:
+		return
 	arrowAnimation.play("right")
 	loadPage(currentPage + 1)

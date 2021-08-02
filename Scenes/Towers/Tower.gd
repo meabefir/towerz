@@ -23,6 +23,7 @@ enum TARGETING_MODES {
 }
 
 enum STATE {
+	DEACTIVATED,
 	IDLE,
 	ACTIVE,
 	DEAD
@@ -104,7 +105,7 @@ func _ready():
 	base.use_parent_material = false
 	gun.use_parent_material = false
 	
-	self.state = STATE.IDLE
+	self.state = STATE.DEACTIVATED
 	
 	shootTimer.connect("timeout", self, "shootTimerTimeout")
 	idleTimer.connect("timeout", self, "idleTimerTimeout")
