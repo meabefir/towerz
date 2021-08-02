@@ -1,242 +1,36 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/PNG/Retina/towerDefense_tile249.png" type="Texture" id=1]
-[ext_resource path="res://assets/PNG/Retina/towerDefense_tile180.png" type="Texture" id=2]
+[ext_resource path="res://Scenes/Towers/Tower.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scenes/Towers/MachineGun/TowerMachineGun.gd" type="Script" id=3]
-[ext_resource path="res://Scenes/Towers/SearchArea.tscn" type="PackedScene" id=4]
 [ext_resource path="res://Shaders/Outline.shader" type="Shader" id=5]
-[ext_resource path="res://Scenes/Custom/Timer.tscn" type="PackedScene" id=6]
 [ext_resource path="res://Scenes/Towers/MachineGun/MachineGunAmmo.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Scenes/Towers/DamageInfo/MachineGun.tres" type="Resource" id=8]
-[ext_resource path="res://Scenes/Towers/RadiusNode.tscn" type="PackedScene" id=9]
-[ext_resource path="res://Scenes/Custom/TimeScaleAnimation.gd" type="Script" id=10]
-[ext_resource path="res://Scenes/Towers/CanTargetAll.tres" type="Resource" id=11]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
 shader = ExtResource( 5 )
 shader_param/line_color = Color( 1, 1, 1, 1 )
-shader_param/line_thickness = 0.0
+shader_param/line_thickness = 4.0
 
 [sub_resource type="CircleShape2D" id=2]
-resource_local_to_scene = true
-radius = 300.0
 
-[sub_resource type="Animation" id=3]
-resource_name = "dead"
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:rotation_degrees")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 720.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath(".:scale")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 1 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1e-05, 1e-05 ) ]
-}
-tracks/2/type = "method"
-tracks/2/path = NodePath(".")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 1 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [  ],
-"method": "queue_free"
-} ]
-}
-
-[sub_resource type="Animation" id=4]
-resource_name = "hide"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/line_thickness")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 0.5 ),
-"update": 0,
-"values": [ 4.0, 0.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Gun:use_parent_material")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Base:use_parent_material")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ false ]
-}
-
-[sub_resource type="Animation" id=5]
-resource_name = "select"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/line_thickness")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1, 0.2 ),
-"transitions": PoolRealArray( 1, 0.5, 1 ),
-"update": 0,
-"values": [ 4.0, 8.0, 4.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Base:use_parent_material")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Gun:use_parent_material")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="Animation" id=6]
-resource_name = "show"
-length = 0.2
-tracks/0/type = "value"
-tracks/0/path = NodePath(".:material:shader_param/line_thickness")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 0,
-"values": [ 0.0, 4.0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Base:use_parent_material")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-tracks/2/type = "value"
-tracks/2/path = NodePath("Gun:use_parent_material")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 1,
-"values": [ true ]
-}
-
-[sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 64, 64 )
-
-[node name="TowerMachineGun" type="Node2D" groups=[
-"towers",
-]]
+[node name="TowerMachineGun" instance=ExtResource( 1 )]
 material = SubResource( 1 )
 script = ExtResource( 3 )
 settingsDataPath = "res://Scenes/Towers/MachineGun/Resources/SettingsDataMahineGun.tres"
 upgradeInfoPath = "res://Scenes/Towers/MachineGun/Resources/UpgradeInfoMachineGun.tres"
 ammoScene = ExtResource( 7 )
 damageResource = ExtResource( 8 )
-cantTarget = ExtResource( 11 )
 rotationSpeed = 360.0
 fireRate = 1.0
 shootingAngle = 0.95
 radius = 300.0
+state = 0
 
-[node name="Base" type="Sprite" parent="."]
-use_parent_material = true
-texture = ExtResource( 2 )
-
-[node name="RadiusNode" parent="." instance=ExtResource( 9 )]
-
-[node name="Gun" type="Sprite" parent="."]
-use_parent_material = true
-texture = ExtResource( 1 )
-
-[node name="ShootPoint" type="Position2D" parent="Gun"]
+[node name="ShootPoint" type="Position2D" parent="Gun" index="0"]
 position = Vector2( 48, 0 )
-
-[node name="SearchArea" parent="." instance=ExtResource( 4 )]
-visible = false
 
 [node name="CollisionShape2D" parent="SearchArea" index="0"]
 shape = SubResource( 2 )
-
-[node name="ShootTimer" parent="." instance=ExtResource( 6 )]
-
-[node name="IdleTimer" type="Timer" parent="."]
-one_shot = true
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/dead = SubResource( 3 )
-anims/hide = SubResource( 4 )
-anims/select = SubResource( 5 )
-anims/show = SubResource( 6 )
-script = ExtResource( 10 )
-
-[node name="BaseCollision" type="Area2D" parent="."]
-collision_layer = 4
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BaseCollision"]
-shape = SubResource( 7 )
 
 [editable path="SearchArea"]

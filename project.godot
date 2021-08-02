@@ -80,6 +80,11 @@ _global_script_classes=[ {
 "path": "res://ResourceTemplates/TowerPrices.gd"
 }, {
 "base": "Resource",
+"class": "TowerStats",
+"language": "GDScript",
+"path": "res://ResourceTemplates/TowerStats.gd"
+}, {
+"base": "Resource",
 "class": "TowersUnlockedInLevel",
 "language": "GDScript",
 "path": "res://ResourceTemplates/TowersUnlockedInLevel.gd"
@@ -104,6 +109,7 @@ _global_script_class_icons={
 "TowerCantTarget": "",
 "TowerPreviewTextures": "",
 "TowerPrices": "",
+"TowerStats": "",
 "TowersUnlockedInLevel": "",
 "UpgradeInfo": ""
 }

@@ -40,6 +40,7 @@ export(PackedScene) onready var ammoScene
 export(Resource) onready var damageResource
 export(TARGETING_MODES) var targetingMode setget setTargetingMode
 export(Resource) var cantTarget = load("res://Scenes/Towers/CanTargetAll.tres")
+export(Resource) var data
 export var rotationSpeed: float
 export var fireRate: float setget setFireRate
 export var shootingAngle: float
@@ -54,7 +55,7 @@ onready var base = get_node("Base")
 onready var gun = get_node("Gun")
 onready var animationPlayer = get_node("AnimationPlayer")
 
-var state setget setState
+export(STATE) onready var state = STATE.DEACTIVATED setget setState
 var canShoot = true
 var target = null setget setTarget
 var targetRotationVector = Vector2.ZERO
@@ -87,6 +88,11 @@ func setSelected(value):
 func setState(value):
 	state = value
 
+	match state:
+		STATE.DEACTIVATED:
+			if animationPlayer:
+				animationPlayer.play("build")
+
 func setTarget(value):
 	target = value
 	
@@ -98,7 +104,9 @@ func setTargetingMode(value):
 	targetingMode = value
 
 func _ready():
+	# commented line below only works on pc
 	#settingsData = settingsData.duplicate(true)
+	
 	settingsData = load(settingsDataPath).duplicate()
 	settingsData.upgradeInfo = load(upgradeInfoPath).duplicate()
 		
@@ -117,7 +125,7 @@ func _ready():
 	self.radius = radius
 
 func handleEvents(event):
-	if state == STATE.DEAD:
+	if state in [STATE.DEAD, STATE.DEACTIVATED]:
 		return
 	if event is InputEventMouseMotion:
 		if mouseOverBase():
